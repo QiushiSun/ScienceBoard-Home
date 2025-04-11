@@ -1,0 +1,1159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>ScienceBoard</title>
+  <link rel="icon" href="public/favicon.ico" />
+  <link rel="apple-touch-icon" href="public/favicon.ico" />
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Open Graph -->
+  <meta property="og:url" content="https://qiushisun.github.io/OS-Genesis-Home/" />
+  <meta property="og:image" content="https://github.com/QiushiSun/OS-Genesis-Home/blob/gh-pages/static/img/os-genesis.jpeg" />
+  <meta property="og:title" content="OS-Genesis: Automating GUI Agent Trajectory Construction via Reverse Task Synthesis" />
+  <meta property="og:description"
+    content="OS-Genesis is an interaction-driven pipeline for synthesizing diverse and high-quality GUI agent trajectory data without human supervision." />
+
+  <!-- Twitter -->
+  <meta name="twitter:url" content="https://x.com/qiushi_sun" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://github.com/QiushiSun/OS-Genesis-Home/blob/gh-pages/static/img/os-genesis.jpeg" />
+  <meta name="twitter:title" content="OS-Genesis: Automating GUI Agent Trajectory Construction via Reverse Task Synthesis" />
+  <meta name="twitter:description"
+    content="OS-Genesis is an interaction-driven pipeline for synthesizing diverse and high-quality GUI agent trajectory data without human supervision." />
+
+  <script src="./static/js/distill_template.v2.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://d3js.org/d3-collection.v1.min.js"></script>
+  <script src="https://rawgit.com/nstrayer/slid3r/master/dist/slid3r.js"></script>
+
+  <script defer="" src="./static/js/hider.js"></script>
+  <script src="./static/js/image_interact.js"></script>
+  <script src="./static/js/switch_videos.js"></script>
+
+  <link rel="stylesheet" href="./static/css/nav.css">
+  <link rel="stylesheet" href="./static/css/style.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css"
+    integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js"
+    integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ"
+    crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+
+  <!-- medium zoom https://github.com/francoischalifour/medium-zoom -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script> <!-- jquery -->
+  <script defer src="./static/js/medium-zoom.min.js"></script>
+  <script defer src="./static/js/zoom.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div class="header-wrapper">
+    <div class="header-container" style="padding: 0; flex-direction: column;">
+      <!-- z-index cannot be less than 1001 -->
+      <nav
+        class="navbar"
+        role="navigation"
+        style="z-index: 1001; background-color: #FFFFFF00;"
+      >
+        <div class="navbar-brand">
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div class="navbar-menu">
+          <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+            <!-- Dropdown menu -->
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" style="color: #FEAE6F">
+                More Research
+              </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item" href="https://qiushisun.github.io/OS-Genesis-Home/">
+                  OS-Genesis
+                </a>
+                <a class="navbar-item" href="https://osatlas.github.io/">
+                  OS-Atlas
+                </a>
+                <a class="navbar-item" href="https://os-copilot.github.io/">
+                  OS-Copilot
+                </a>
+                <a class="navbar-item" href="https://chengyou-jia.github.io/AgentStore-Home/">
+                  AgentStore
+                </a>
+                <a class="navbar-item" href="https://github.com/njucckevin/SeeClick">
+                  SeeClick
+                </a>
+                <a class="navbar-item" href="https://github.com/xufangzhi/ENVISIONS">
+                  ENVISIONS
+                </a>
+                <a class="navbar-item" href="https://arxiv.org/abs/2310.00280">
+                  Corex
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="header-container" id="header-container">
+        <div class="header-content">
+          <h1 style="margin-top: 0px"><i>OS-Genesis</i></h1>
+          <h2>Automating GUI Agent Trajectory Construction<br>
+            via Reverse Task Synthesis</h2>
+          <p>
+            Introducing OS-Genesis, a
+            <em><strong>manual-free</strong></em>
+            data pipeline for synthesizing GUI agent trajectory. OS-Genesis is characterized by the following
+            core features:
+          </p>
+
+          <div class="icon-container">
+            <div class="icon-item">
+              <img src="./static/img/icons/visual.svg" alt="Visual Representation Icon">
+              <div><strong>Interaction-driven</strong>: Agents actively explore GUI environments through stepwise interactions to discover functionalities and generate data.</div>
+            </div>
+            <div class="icon-item">
+              <img src="./static/img/icons/connector.svg" alt="Connector Design Icon">
+              <div><strong>Reverse Task Synthesis</strong>: OS-Genesis retroactively derives meaningful low/high-level task instructions from observed interactions and state changes, enabling the construction of diverse and executable trajectories without pre-defined tasks.</div>
+            </div>
+            <div class="icon-item">
+              <img src="./static/img/icons/data.svg" alt="Instruction Tuning Data Icon">
+              <div><strong>Trajectory Data</strong>: We construct and release high-quality mobile and web trajectories to accelerate GUI agents research.</div>
+            </div>
+            <!-- <div class="icon-item">
+              <img src="./static/img/icons/recipe.svg" alt="Instruction Tuning Recipes Icon">
+              <div><strong>Instruction Tuning Recipes</strong>: We discuss instruction tuning strategies and
+                practices.</div>
+            </div> -->
+            <div class="icon-item">
+              <img src="./static/img/icons/eval.svg" alt="Benchmarking Icon">
+              <div><strong>Performance</strong>: OS-Genesis significantly outperforms other synthesis methods on benchmarks like AndroidWorld and WebArena.</div>
+            </div>
+          </div>
+
+          <div class="button-container">
+            <!-- replace arxiv -->
+            <a href="https://arxiv.org/abs/2412.19723" class="button paper-link" target="_blank">
+              <span class="icon is-small">
+                <i class="ai ai-arxiv"></i>
+              </span>
+              arXiv
+            </a>
+            <!-- replace pdf -->
+            <!-- <a href="https://arxiv.org/abs/2412.19723" class="button paper-link" target="_blank">
+              <span class="icon is-small">
+                <i class="fas fa-file-pdf"></i>
+              </span>
+              <span>pdf</span>
+            </a> -->
+            <!-- replace image -->
+            <a href="https://github.com/OS-Copilot/OS-Genesis" class="button" target="_blank">
+              <span class="icon is-small">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>Code</span>
+            </a>
+            <!-- <br> -->
+            <a href="https://huggingface.co/collections/OS-Copilot/os-genesis-6768d4b6fffc431dbf624c2d"
+              class="button" target="_blank">
+              <span class="icon is-small">
+                <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo"
+                  style="height: 1em;">
+              </span>
+              <span>Checkpoints</span>
+            </a>
+            <a href="https://huggingface.co/collections/OS-Copilot/os-genesis-6768d4b6fffc431dbf624c2d"
+              class="button" target="_blank">
+              <span class="icon is-small">
+                <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo"
+                  style="height: 1em;">
+              </span>
+              <span>Data</span>
+            </a>
+          </div>
+        </div>
+        <div class="header-image">
+          <img draggable="false" src="static/img/os-genesis.jpeg" alt="Teaser Image" class="teaser-image">
+        </div>
+      </div>
+    </div>
+  </div>
+  <d-article>
+    <div class="byline">
+      <div class="byline-container">
+        <p>
+          <a href="https://qiushisun.github.io/" class="author-link" target="_blank">Qiushi
+            Sun<sup>*</sup></a> &emsp;
+          <a href="https://scholar.google.com/citations?user=S2IPVnwAAAAJ" class="author-link" target="_blank">Kanzhi
+            Cheng<sup>*</sup></a> &emsp;
+          <a href="https://heroding77.github.io/" class="author-link" target="_blank">Zichen
+            Ding<sup>*</sup></a> &emsp;
+          <a href="https://chuanyangjin.com/" class="author-link" target="_blank">Chuanyang
+            Jin<sup>*</sup></a>
+          <br>
+          <a href="https://qiushisun.github.io/OS-Genesis-Home/" class="author-link" target="_blank">Yian
+            Wang</a> &emsp;
+          <a href="https://xufangzhi.github.io/" class="author-link" target="_blank">Fangzhi Xu</a> &emsp;
+          <a href="https://qiushisun.github.io/OS-Genesis.github.io/" class="author-link" target="_blank">Zhenyu Wu</a>
+          &emsp;
+          <a href="https://lihengchen.com/" class="author-link" target="_blank">Liheng Chen</a> &emsp;
+          <a href="https://chengyou-jia.github.io/" class="author-link" target="_blank">Chengyou Jia</a>
+          <br>
+          <a href="https://github.com/ShiinaHiiragi" class="author-link" target="_blank">Zhoumianze Liu</a>
+          &emsp;
+          <a href="https://www.cs.hku.hk/index.php/people/academic-staff/kao" class="author-link" target="_blank">Ben
+            Kao</a> &emsp;
+          <a href="https://ghli.org/" class="author-link" target="_blank">Guohao Li</a> &emsp;
+          <a href="https://jxhe.github.io/" class="author-link" target="_blank">Junxian He</a> &emsp;
+          <a href="https://mmlab.siat.ac.cn/yuqiao/" class="author-link" target="_blank">Yu Qiao</a> &emsp;
+          <a href="https://lividwo.github.io/zywu.github.io/" class="author-link" target="_blank">Zhiyong
+            Wu</a>
+        <p></p>
+        </p>
+        <p class="logos-between">
+          <img src="public/logos/pjlab.png" style="height: 80px;">
+          <img src="public/logos/hku.png" style="height: 80px;">
+          <img src="public/logos/jhu.svg" style="height: 80px;">
+          <img src="public/logos/sjtu.png" style="height: 80px;">
+          <img src="public/logos/oxf.png" style="height: 80px; margin-left: 16px;">
+          <img src="public/logos/ust.png" style="height: 80px; margin-left: 16px;">
+        </p>
+      </div>
+    </div>
+
+
+    <p class="text abstract">
+      <!-- <strong>vision-<i>centric</i></strong> -->
+      We introduce OS-Genesis, an interaction-driven pipeline that synthesizes high-quality and diverse GUI agent trajectory data without human supervision. By leveraging reverse task synthesis, OS-Genesis enables effective training of GUI agents to achieve superior performance on dynamic benchmarks such as AndroidWorld and WebArena.
+
+      <br><br>
+      OS-Genesis is built around the following components, aiming for synthesizing high-quality trajectory data for GUI agents:
+    <ol class="text">
+      <li><strong><a href="#visual_representations">&sect;Interaction-Driven Functional Discovery</a></strong>: A rule-based process systematically interacts with GUIs to uncover functionalities without pre-defined tasks.</li>
+      <li><strong><a href="#connector_design">&sect;Reverse Task Synthesis</a></strong>: Converts triples (pre- and post-action states, actions) into low-level instructions and associate them with high-level tasks. This retrospective approach bridges the gap between dynamic GUI functionalities and executable trajectories
+      </li>
+      <li><strong><a href="#instruction_data">&sect;Trajectory Reward Model</a></strong>: Evaluates synthesized trajectories using a graded scoring system that measures task completion and action coherence. This ensures the retention of valuable incomplete trajectories while maintaining high data quality.</li>
+      <li><strong><a href="#sec:benchmarking">&sect;Performance</a></strong>: We examine existing online benchmarks like AndroidWorld and WebArena. OS-Genesis achieves notable performance gains, closing the gap with human-annotated data.</li>
+    </ol>
+    </p>
+
+    <div class="icon-row">
+      <a href="#visual-representation" class="icon-link">
+        <img src="static/img/icons/visual.svg" alt="Visual Representation Logo" class="icon">
+        Main<br>Pipeline
+      </a>
+      <!-- <a href="#connector_design" class="icon-link">
+        <img src="static/img/icons/connector.svg" alt="Connector Logo" class="icon">
+        Perform<br>Design
+      </a> -->
+      <!-- <a href="#instruction_data" class="icon-link">
+        <img src="static/img/icons/data.svg" alt="Data Logo" class="icon">
+        Instruction<br>Data
+      </a> -->
+      <a href="#sec:benchmarking" class="icon-link">
+        <img src="static/img/icons/eval.svg" alt="Eval Logo" class="icon">
+        Evaluation<br>Results
+      </a>
+      <a href="#instruction_data" class="icon-link">
+        <img src="static/img/icons/data.svg" alt="Data Logo" class="icon">
+        In-depth<br>Analysis
+      </a>
+      <a href="#instruction_data" class="icon-link">
+        <img src="static/img/icons/data.svg" alt="Data Logo" class="icon">
+        Code<br>Data
+      </a>
+    </div>
+
+    <p class="click-hint" style="width: 85%;">
+      <img src="static/img/icons/click.gif" style="width: 1.5rem">
+      <strong>Click to jump to each section.</strong>
+    </p>
+
+
+    <p class="text abstract">
+      We will release all <a href="https://huggingface.co/collections/OS-Copilot/os-genesis-6768d4b6fffc431dbf624c2d" target="_blank">checkpoints</a>,
+      <a href="https://github.com/OS-Copilot/OS-Genesis" target="_blank">code</a>,
+      <a href="https://huggingface.co/collections/OS-Copilot/os-genesis-6768d4b6fffc431dbf624c2d" target="_blank">synthesized trajectories</a>,
+      and more details. We hope OS-Genesis can inspire and boost future research in building GUI agents.
+    </p>
+
+    <!-- 
+    <p class="text abstract">
+      To this end, Cambrian-1 not only achieves state-of-the-art performance, but also serves as a comprehensive,
+      open cookbook for instruction-tuned MLLMs. See <a href="#State-of-the-art-MLLM-performance">§State-of-the-art MLLM
+        performance</a>.
+      We provide <a href="https://huggingface.co/nyu-visionx" target="_blank">model weights</a>,
+      <a href="https://github.com/cambrian-mllm/cambrian" target="_blank">code</a>,
+      <a href="https://huggingface.co/nyu-visionx" target="_blank">datasets</a>,
+      and detailed instruction-tuning and evaluation recipes. We hope our release will inspire and accelerate
+      advancements in multimodal systems and visual representation learning.
+    </p> -->
+
+    <h1 class="text">GUI Trajectory Data</h1>
+
+    <p class="text">
+      Training with high-quality GUI trajectories is essential for enhancing agentic capabilities. Ideal GUI agent trajectories include the following key components:
+    </p>
+
+    <ol class="text">
+      <img src="public/traj.gif" width="40%" style="float: right; margin-left: 8px;">
+      <li>a high-level instruction that defines the overall goal the agent aims to accomplish</li>
+      <li>a series of low-level instructions that each describe specific steps required</li>
+      <li>actions (e.g., CLICK, TYPE)</li>
+      <li>states, which include visual representations like screenshots and textual representations such as a11ytree</li>
+    </ol>
+
+    <h1 class="text">Interaction-Driven Functional Discovery</h1>
+
+    <p class="text">
+      Interaction-Driven Functional Discovery is a rule-based exploration process in OS-Genesis that systematically traverses dynamic GUI environments by interacting with UI elements (e.g., clicking, typing, scrolling). This approach uncovers diverse functionalities without relying on predefined tasks, collecting interaction triples that capture pre- and post-action states along with executed actions. These triples form the foundation for reverse task synthesis, enabling the generation of meaningful and executable task instructions. 
+    </p>
+
+    <img src="public/sub-1.gif" width="100%">
+
+    <h1 class="text">Reverse Task Synthesis</h1>
+
+    <p class="text">
+      Reverse Task Synthesis is a core component of OS-Genesis that transforms observed interaction triples—comprising pre- and post-action states and actions—into meaningful low-level and high-level task instructions. By retroactively interpreting changes in the GUI environment caused by actions, this process generates executable low-level instructions, which are then aggregated into broader, goal-oriented high-level tasks. This human-free approach bridges the gap between abstract instructions and dynamic GUI functionalities, enabling the creation of diverse, high-quality trajectories without reliance on predefined tasks or human supervision.
+    </p>
+
+    <img src="public/sub-2.gif" width="100%">
+
+    <h1 class="text">Exploration and Reward Modeling</h1>
+
+    <p class="text">
+      After reverse task synthesis generates high-level and low-level task instructions, these instructions are executed within the GUI environment to create complete trajectories.
+    </p>
+
+    <img src="public/explore-and-reward.gif" width="100%">
+
+    <p class="text">
+    To ensure the quality and utility of these trajectories, OS-Genesis employs a Trajectory Reward Model (TRM). Built upon GPT-4o, TRM evaluates each trajectory based on completion (task fulfillment) and coherence (logical sequence of actions), assigning a graded reward score from 1 to 5. Unlike traditional binary filtering methods, TRM allows even incomplete but valuable trajectories to contribute to training.
+    </p>
+
+    <hr>
+
+    
+
+      <div id='visual-representation' class="viusal-representation-block">
+        <h1 class="text">Main Experiments </h1>
+
+        <h2 class="text">Mobile </h2>
+
+        <p class="text">
+          We first evaluate OS-Genesis on mobiles tasks, covering AndroidWorld<d-cite key="rawles2024androidworld"></d-cite> (in-domain setting) and AndroidControl<d-cite key="li2024effectsdatascaleui"></d-cite> (OOD setting).
+          The results are shown in <a href="#tab:mobile">Table 1</a>
+        </p>
+        
+        <div id="tab:mobile" style="display: flex; flex-direction: column; align-items: center;">
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th rowspan="2" class="tb-hdr">Base Model</th>
+                  <th rowspan="2" class="tb-hdr">Strategies</th>
+                  <th rowspan="2" class="tb-hdr">AndroidWorld</th>
+                  <th colspan="2" class="tb-hdr" style="border: 0;">AndroidControl-High</th>
+                  <th colspan="2" class="tb-hdr" style="border: 0;">AndroidControl-Low</th>
+                </tr>
+                <tr>
+                  <th class="tb-hdr">SR</th>
+                  <th class="tb-hdr">Type</th>
+                  <th class="tb-hdr">SR</th>
+                  <th class="tb-hdr">Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>GPT-4o</td>
+                  <td>Zero-Shot (M3A)</td>
+                  <td>23.70</td>
+                  <td>53.04</td>
+                  <td>69.14</td>
+                  <td>69.59</td>
+                  <td>80.27</td>
+                </tr>
+                <tr>
+                  <td rowspan="4">InternVL2-4B</td>
+                  <td>Zero-Shot</td>
+                  <td>0.00</td>
+                  <td>16.62</td>
+                  <td>39.96</td>
+                  <td>33.69</td>
+                  <td>60.65</td>
+                </tr>
+                <tr>
+                  <td>Task-Driven</td>
+                  <td>4.02</td>
+                  <td>27.37</td>
+                  <td>47.08</td>
+                  <td>66.48</td>
+                  <td>90.37</td>
+                </tr>
+                <tr>
+                  <td>Task-Driven w. Self Instruct</td>
+                  <td>7.14</td>
+                  <td>24.95</td>
+                  <td>44.27</td>
+                  <td>66.70</td>
+                  <td>90.79</td>
+                </tr>
+                <tr>
+                  <td>OS-Genesis</td>
+                  <td class="highlight">15.18</td>
+                  <td class="highlight">33.39</td>
+                  <td class="highlight">56.20</td>
+                  <td class="highlight">73.38</td>
+                  <td class="highlight">91.32</td>
+                </tr>
+                <tr>
+                  <td rowspan="4">InternVL2-8B</td>
+                  <td>Zero-Shot</td>
+                  <td>2.23</td>
+                  <td>17.89</td>
+                  <td>38.22</td>
+                  <td>47.69</td>
+                  <td>66.67</td>
+                </tr>
+                <tr>
+                  <td>Task-Driven</td>
+                  <td>4.46</td>
+                  <td>23.79</td>
+                  <td>43.94</td>
+                  <td>64.43</td>
+                  <td>89.83</td>
+                </tr>
+                <tr>
+                  <td>Task-Driven w. Self Instruct</td>
+                  <td>5.36</td>
+                  <td>23.43</td>
+                  <td>44.43</td>
+                  <td>64.69</td>
+                  <td>89.85</td>
+                </tr>
+                <tr>
+                  <td>OS-Genesis</td>
+                  <td class="highlight">16.96</td>
+                  <td class="highlight">35.77</td>
+                  <td class="highlight">64.57</td>
+                  <td class="highlight">71.37</td>
+                  <td class="highlight">91.27</td>
+                </tr>
+                <tr>
+                  <td rowspan="4">Qwen2-VL-7B</td>
+                  <td>Zero-Shot</td>
+                  <td>0.89</td>
+                  <td>28.92</td>
+                  <td>61.39</td>
+                  <td>46.37</td>
+                  <td>72.78</td>
+                </tr>
+                <tr>
+                  <td>Task-Driven</td>
+                  <td>6.25</td>
+                  <td>38.84</td>
+                  <td>58.08</td>
+                  <td>71.33</td>
+                  <td>88.71</td>
+                </tr>
+                <tr>
+                  <td>Task-Driven w. Self Instruct</td>
+                  <td>9.82</td>
+                  <td>39.36</td>
+                  <td>58.28</td>
+                  <td>71.57</td>
+                  <td>89.73</td>
+                </tr>
+                <tr>
+                  <td>OS-Genesis</td>
+                  <td class="highlight">17.41</td>
+                  <td class="highlight">44.54</td>
+                  <td class="highlight">66.15</td>
+                  <td class="highlight">74.17</td>
+                  <td class="highlight">90.72</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption style="text-align: center; width: 140%;">
+            Table 1: Performance on AndroidWorld and AndroidControl benchmarks.
+          </figcaption>
+        </div>
+
+        <p class="text">
+          <strong>AndroidWorld:</strong> OS-Genesis demonstrates exceptional performance on the AndroidWorld benchmark, significantly narrowing the gap between open-source agents and the state-of-the-art GPT-4o-based M3A agent. Training with OS-Genesis-synthesized data achieves nearly double the success rates compared to task-driven methods, with a success rate improvement from 9.82% to 17.41% for Qwen2-VL-7B and substantial gains for other backbones like InternVL2-8B.</li>
+        </p>
+        <p class="text">
+          <strong>AndroidControl:</strong> On AndroidControl, OS-Genesis showcases strong OOD capability, outperforming baselines in both high/low-level tasks despite encountering only 20 of 833 apps during synthesis. It achieves superior action and planning, validating our exploration-first approach for generating diverse, high-quality tasks and adapting effectively to unseen environments.
+        </p>
+
+        <h2 class="text">Web </h2>
+        <p class="text">
+          Then, we evaluate OS-Genesis on web task, using challenging online benchmark: WebArena<d-cite key="zhou2024webarena"></d-cite> as the testbed.
+          The results are shown in <a href="#tab:mobile">Table 2</a>
+        </p>
+
+        <p class="text">
+          <strong>WebArena:</strong> On WebArena, OS-Genesis delivers notable performance improvements across diverse 5 navigation scenarios, outperforming task-driven baselines and achieving significant gains with InternVL2-8B and Qwen2-VL-7B backbones. By leveraging reverse task synthesis, OS-Genesis effectively explores the rich interactive elements of web environments, producing more meaningful and diverse trajectories.
+        </p>
+
+        <div id="tab:mobile" style="display: flex; flex-direction: column; align-items: center;">
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th class="tb-hdr">Base Model</th>
+                  <th class="tb-hdr">Strategies</th>
+                  <th class="tb-hdr">Shopping</th>
+                  <th class="tb-hdr">CMS</th>
+                  <th class="tb-hdr">Reddit</th>
+                  <th class="tb-hdr">Gitlab</th>
+                  <th class="tb-hdr">Maps</th>
+                  <th class="tb-hdr">Overall</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>GPT-4o</td>
+                  <td>Zero-Shot</td>
+                  <td>14.28</td>
+                  <td>21.05</td>
+                  <td>6.25</td>
+                  <td>14.29</td>
+                  <td>20.00</td>
+                  <td>16.25</td>
+                </tr>
+                <tr>
+                  <td rowspan="4">InternVL2-4B</td>
+                  <td>Zero-Shot</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                </tr>
+                <tr>
+                  <td>Task-Driven</td>
+                  <td>5.36</td>
+                  <td>1.76</td>
+                  <td>0.00</td>
+                  <td class="highlight">9.52</td>
+                  <td>5.00</td>
+                  <td>4.98</td>
+                </tr>
+                <tr>
+                  <td>Task-Driven w. Self Instruct</td>
+                  <td>5.36</td>
+                  <td>3.51</td>
+                  <td>0.00</td>
+                  <td class="highlight">9.52</td>
+                  <td>7.50</td>
+                  <td>5.81</td>
+                </tr>
+                <tr>
+                  <td>OS-Genesis</td>
+                  <td class="highlight">10.71</td>
+                  <td class="highlight">7.02</td>
+                  <td class="highlight">3.13</td>
+                  <td>7.94</td>
+                  <td class="highlight">7.50</td>
+                  <td class="highlight">7.88</td>
+                </tr>
+                <tr>
+                  <td rowspan="4">InternVL2-8B</td>
+                  <td>Zero-Shot</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                </tr>
+                <tr>
+                  <td>Task-Driven</td>
+                  <td>3.57</td>
+                  <td>7.02</td>
+                  <td>0.00</td>
+                  <td>6.35</td>
+                  <td>2.50</td>
+                  <td>4.56</td>
+                </tr>
+                <tr>
+                  <td>Task-Driven w. Self Instruct</td>
+                  <td class="highlight">8.93</td>
+                  <td>10.53</td>
+                  <td>6.25</td>
+                  <td class="highlight">7.94</td>
+                  <td>0.00</td>
+                  <td>7.05</td>
+                </tr>
+                <tr>
+                  <td>OS-Genesis</td>
+                  <td>7.14</td>
+                  <td class="highlight">15.79</td>
+                  <td class="highlight">9.34</td>
+                  <td>6.35</td>
+                  <td class="highlight">10.00</td>
+                  <td class="highlight">9.96</td>
+                </tr>
+                <tr>
+                  <td rowspan="4">Qwen2-VL-7B</td>
+                  <td>Zero-Shot</td>
+                  <td class="highlight">12.50</td>
+                  <td>7.02</td>
+                  <td>6.25</td>
+                  <td>6.35</td>
+                  <td>5.00</td>
+                  <td>7.47</td>
+                </tr>
+                <tr>
+                  <td>Task-Driven</td>
+                  <td>8.93</td>
+                  <td>7.02</td>
+                  <td>6.25</td>
+                  <td>6.35</td>
+                  <td>5.00</td>
+                  <td>7.05</td>
+                </tr>
+                <tr>
+                  <td>Task-Driven w. Self Instruct</td>
+                  <td>8.93</td>
+                  <td>1.76</td>
+                  <td>3.13</td>
+                  <td>4.84</td>
+                  <td class="highlight">7.50</td>
+                  <td>5.39</td>
+                </tr>
+                <tr>
+                  <td>OS-Genesis</td>
+                  <td>7.14</td>
+                  <td class="highlight">8.77</td>
+                  <td class="highlight">15.63</td>
+                  <td class="highlight">15.87</td>
+                  <td>5.00</td>
+                  <td class="highlight">10.79</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption style="text-align: center; width: 140%;">
+            Table 2: Performance on WebArena benchmarks.
+          </figcaption>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="text">Analysis</h1>
+        <!-- Radar -->
+        <!--
+        <h2 class="text">How TRM Impacts Performance?</h2>
+        <div style="display: flex; max-width: 100%; justify-content: space-between;">
+          <div style="width: 49%;"><canvas id="A-1-1"></canvas></div>
+          <div style="width: 49%;"><canvas id="A-1-2"></canvas></div>
+        </div>
+        -->
+
+        <!-- Line -->
+        <h2 class="text">How Scaling Trajectory Data Improves Agentic Ability?</h2>
+
+        <p class="text">
+          We investigate the impact of data scale on building GUI agents. 
+          To explore this, 
+          we partition the data synthesized by OS-Genesis into subsets, 
+          ranging from small-scale trajectories to those exceeding the size used in main experiments.
+          Using AndroidWorld as our testbed, we focus on two primary questions:
+          (1) How does performance improve as the data scale increases?
+          (2) Does performance saturate at higher data scales?
+        </p>
+
+        <canvas id="A-2"></canvas>
+
+        <p class="text">
+          As shown above, task performance generally improves as the number of trajectories increases, while saturation emerges at larger data scales.
+        </p>
+
+        <!-- Bar #1 -->
+        <h2 class="text">How Far are we from Human Data?</h2>
+
+        <p class="text">
+          We also investigate the gap between OS-Genesis-synthesized data and human-annotated data.
+
+          (1) trajectories from OS-Genesis v.s. human-annotated trajectories. We select 1K crowdsourced trajectories from AndroidControl training set for comparison.
+  
+          As shown below, we significantly narrow the performance gap between synthetic trajectories and human-annotated trajectories. This is notably evident in high-level tasks, demonstrating that agents trained on OS-Genesis trajectories can plan and solve problems more closely aligned with human manners. In terms of average success rate, viewing human-annotated data as the gold standard, the performance retention rate of OS-Genesis data surpasses 80%.
+        </p>
+
+        <div style="display: flex; max-width: 100%; justify-content: space-between;">
+          <div style="width: 49%; height: 240px;">
+            <canvas id="A-3-1"></canvas>
+          </div>
+          <div style="width: 49%; height: 240px;">
+            <canvas id="A-3-2"></canvas>
+          </div>
+        </div>
+
+        <p class="text">
+          (2) high-level instructions synthesized through OS-Genesis v.s. human-written instructions. For comparison, we match 500 human-written tasks from the AndroidControl training set and use GPT-4o for exploration. As observed, even when high-level instructions are written by human, their performance falls short compared to OS-Genesis's instructions. This can be attributed to two main factors: (a) Pre-defined tasks sometimes fail to align with the dynamic environment, and (b) Models may introduce errors when interpreting the intentions of human annotators. In contrast, OS-Genesis generates data in a progressive way, grounded in low-level interactions, which makes it inherently more suitable for unsupervised exploration and adaptation.
+        </p>
+
+        <!-- Bar #2 -->
+        <div style="display: flex; max-width: 100%; justify-content: space-between;">
+          <div style="width: 49%; height: 240px;">
+            <canvas id="A-3-3"></canvas>
+          </div>
+          <div style="width: 49%; height: 240px;">
+            <canvas id="A-3-4"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="conclusion" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
+      <h2 class="text" style="margin-top:0px; margin-bottom:10px">Conclusion</h2>
+      <p class="text">
+        OS-Genesis is a data synthesis pipeline designed to revolutionize the construction of GUI agent trajectories. Reverse task synthesis enables the generation of diverse and coherent tasks by retroactively deriving instructions from observed interactions, while TRM ensures the quality of trajectories through graded evaluations. Together, OS-Genesis address critical challenges in GUI agent trajectories construction, paving the way for high-quality agentic data generation. We hope that it can provide a promising direction for generating high-quality trajectory data for GUI agents, bringing the community one step closer to achieving digital automation.
+      </p>
+    </div>
+
+    <!-- OS-Genesis is a groundbreaking data synthesis pipeline that transforms the construction of GUI agent trajectories through an interaction-driven approach. By enabling the generation of diverse, high-quality trajectory data without human supervision, it addresses critical challenges in agent training. We hope OS-Genesis inspires further innovation in trajectory synthesis, advancing the field toward scalable solutions for training GUI agents and bringing the community closer to achieving comprehensive digital automation. -->
+
+
+    <div id="Acknowledgement" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
+      <h2 class="text" style="margin-top:0px; margin-bottom:10px">Acknowledgement</h2>
+      <p class="text">
+        We would like to thank <a href="https://github.com/google-research/android_world" target="_blank">AndroidWorld</a> authors for helping us tackle various issues in dynamic environments, as well as the <a href="https://cambrian-mllm.github.io/" target="_blank">Cambrian</a> authors for providing this webpage template.
+      </p>
+    </div>    
+
+  </d-article>
+  <d-appendix>
+    <h3>BibTeX</h3>
+    <p class="bibtex">
+      @article{sun2024osgenesis,<br>
+      &nbsp;&nbsp;title={OS-Genesis: Automating GUI Agent Trajectory Construction via Reverse Task
+      Synthesis},<br>
+      &nbsp;&nbsp;author={Sun, Qiushi and Cheng, Kanzhi and Ding, Zichen and Jin, Chuanyang and Wang, Yian and Xu, Fangzhi and Wu, Zhenyu and Jia, Chengyou and Chen, Liheng and Liu, Zhoumianze and others},<br>
+      &nbsp;&nbsp;journal={arXiv preprint arXiv:2412.19723},<br>
+      &nbsp;&nbsp;year={2024}<br>
+      }
+    </p>
+
+    <d-footnote-list></d-footnote-list>
+    <d-citation-list></d-citation-list>
+  </d-appendix>
+  <!-- bibliography will be inlined during Distill pipeline's pre-rendering -->
+  <d-bibliography src="bibliography.bib"></d-bibliography>
+  <script src="./static/js/nav-bar.js"></script>
+</body>
+
+
+
+<script>
+  Chart.defaults.font.family = "Charter";
+
+  // new Chart(document.querySelector("#A-1-1"), {
+  //   type: "radar",
+  //   data: {
+  //     labels: [
+  //       "AC-Type(H)",
+  //       "AC-SR(H)",
+  //       "AW-SR",
+  //       "AC-Type(L)",
+  //       "AC-SR(L)"
+  //     ],
+  //     datasets: [
+  //       {
+  //         label: "TRM",
+  //         data: [44.54, 66.15, 74.17, 90.72, 17.41],
+  //         fill: true,
+  //         backgroundColor: "rgba(255, 99, 132, 0.2)",
+  //         borderColor: "rgb(255, 99, 132)",
+  //         pointBackgroundColor: "rgb(255, 99, 132)",
+  //         pointBorderColor: "#fff",
+  //         pointHoverBackgroundColor: "#fff",
+  //         pointHoverBorderColor: "rgb(255, 99, 132)"
+  //       },
+  //       {
+  //         label: "Labeler",
+  //         data: [44.19, 66.37, 75.82, 90.67, 16.52],
+  //         fill: true,
+  //         backgroundColor: "rgba(255, 159, 64, 0.2)",
+  //         borderColor: "rgb(255, 159, 64)",
+  //         pointBackgroundColor: "rgb(255, 159, 64)",
+  //         pointBorderColor: "#fff",
+  //         pointHoverBackgroundColor: "#fff",
+  //         pointHoverBorderColor: "rgb(255, 159, 64)"
+  //       },
+  //       {
+  //         label: "w/o RM",
+  //         data: [43.9, 65.75, 74.1, 91.11, 14.73],
+  //         fill: true,
+  //         backgroundColor: "rgba(255, 205, 86, 0.2)",
+  //         borderColor: "rgb(255, 205, 86)",
+  //         pointBackgroundColor: "rgb(255, 205, 86)",
+  //         pointBorderColor: "#fff",
+  //         pointHoverBackgroundColor: "#fff",
+  //         pointHoverBorderColor: "rgb(255, 205, 86)"
+  //       }
+  //     ]
+  //   },
+  //   options: {
+  //     responsive: true,
+  //     scales: {
+  //       r: {
+  //         min: 10,
+  //         max: 100,
+  //         ticks: {
+  //           stepSize: 15
+  //         }
+  //       }
+  //     },
+  //     elements: {
+  //       line: {
+  //         borderWidth: 3
+  //       }
+  //     },
+  //     plugins: {
+  //         title: {
+  //         display: true,
+  //         text: "Qwen-7B"
+  //       }
+  //     }
+  //   },
+  // });
+
+  // new Chart(document.querySelector("#A-1-2"), {
+  //   type: "radar",
+  //   data: {
+  //     labels: [
+  //       "AC-Type(H)",
+  //       "AC-SR(H)",
+  //       "AW-SR",
+  //       "AC-Type(L)",
+  //       "AC-SR(L)"
+  //     ],
+  //     datasets: [
+  //       {
+  //         label: "TRM",
+  //         data: [35.77, 64.57, 71.37, 91.27, 16.96],
+  //         fill: true,
+  //         backgroundColor: "rgba(255, 99, 132, 0.2)",
+  //         borderColor: "rgb(255, 99, 132)",
+  //         pointBackgroundColor: "rgb(255, 99, 132)",
+  //         pointBorderColor: "#fff",
+  //         pointHoverBackgroundColor: "#fff",
+  //         pointHoverBorderColor: "rgb(255, 99, 132)"
+  //       },
+  //       {
+  //         label: "Labeler",
+  //         data: [35.53, 63.61, 70.54, 90.57, 16.44],
+  //         fill: true,
+  //         backgroundColor: "rgba(255, 159, 64, 0.2)",
+  //         borderColor: "rgb(255, 159, 64)",
+  //         pointBackgroundColor: "rgb(255, 159, 64)",
+  //         pointBorderColor: "#fff",
+  //         pointHoverBackgroundColor: "#fff",
+  //         pointHoverBorderColor: "rgb(255, 159, 64)"
+  //       },
+  //       {
+  //         label: "w/o RM",
+  //         data: [34.04, 60.95, 66.85, 89.37, 16.37],
+  //         fill: true,
+  //         backgroundColor: "rgba(255, 205, 86, 0.2)",
+  //         borderColor: "rgb(255, 205, 86)",
+  //         pointBackgroundColor: "rgb(255, 205, 86)",
+  //         pointBorderColor: "#fff",
+  //         pointHoverBackgroundColor: "#fff",
+  //         pointHoverBorderColor: "rgb(255, 205, 86)"
+  //       }
+  //     ]
+  //   },
+  //   options: {
+  //     scales: {
+  //       r: {
+  //         min: 10,
+  //         max: 100,
+  //         ticks: {
+  //           stepSize: 15
+  //         }
+  //       }
+  //     },
+  //     elements: {
+  //       line: {
+  //         borderWidth: 3
+  //       }
+  //     },
+  //     plugins: {
+  //       title: {
+  //         display: true,
+  //         text: "InternVL2-8B"
+  //       }
+  //     }
+  //   },
+  // });
+
+  new Chart(document.querySelector("#A-2"), {
+    type: "line",
+    maintainAspectRatio: false,
+    data: {
+      labels: ["0", "100", "200", "500", "1000", "1500"],
+      datasets: [
+        {
+          label: "Qwen2-VL-7B",
+          data: [6.25, 8.26, 8.26, 9.82, 17.41, 19.19],
+          fill: false,
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgb(255, 99, 132)",
+          pointBackgroundColor: "rgb(255, 99, 132)",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgb(255, 99, 132)",
+          tension: 0.1
+        },
+        {
+          label: "InternVL2-4B",
+          data: [0, 0, 4.46, 7.14, 15.18, 14.73],
+          fill: false,
+          backgroundColor: "rgba(255, 159, 64, 0.2)",
+          borderColor: "rgb(255, 159, 64)",
+          pointBackgroundColor: "rgb(255, 159, 64)",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgb(255, 159, 64)",
+          tension: 0.1
+        },
+        {
+          label: "InternVL2-8B",
+          data: [4.46, 4.46, 3.57, 11.60, 16.96, 17.41],
+          fill: false,
+          backgroundColor: "rgba(255, 205, 86, 0.2)",
+          borderColor: "rgb(255, 205, 86)",
+          pointBackgroundColor: "rgb(255, 205, 86)",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgb(255, 205, 86)",
+          tension: 0.1
+        }
+      ]
+    },
+    options: {
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: "# Trajectories"
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: "Success Rate (%)"
+          }
+        }
+      }
+    }
+  });
+
+  new Chart(document.querySelector("#A-3-1"), {
+    type: "bar",
+    data: {
+      labels: ["High-Level", "Low-Level"],
+      datasets: [
+        {
+          label: "Task-Driven",
+          data: [23.79, 64.43],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgb(255, 99, 132)"
+        },
+        {
+          label: "Self-Instruct",
+          data: [23.56, 63.96],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 159, 64, 0.2)",
+          borderColor: "rgb(255, 159, 64)"
+        },
+        {
+          label: "OS-Genesis",
+          data: [37.07, 72.37],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 205, 86, 0.2)",
+          borderColor: "rgb(255, 205, 86)"
+        },
+        {
+          label: "Human",
+          data: [51.62, 84.00],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          borderColor: "rgb(75, 192, 192)"
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    },
+  });
+
+  new Chart(document.querySelector("#A-3-2"), {
+    type: "bar",
+    data: {
+      labels: ["High-Level", "Low-Level"],
+      datasets: [
+        {
+          label: "Task-Driven",
+          data: [38.84, 71.33],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgb(255, 99, 132)"
+        },
+        {
+          label: "Self-Instruct",
+          data: [37.3, 70.61],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 159, 64, 0.2)",
+          borderColor: "rgb(255, 159, 64)"
+        },
+        {
+          label: "OS-Genesis",
+          data: [46.54, 74.87],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 205, 86, 0.2)",
+          borderColor: "rgb(255, 205, 86)"
+        },
+        {
+          label: "Human",
+          data: [56.47, 86.93],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          borderColor: "rgb(75, 192, 192)"
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    },
+  });
+
+  new Chart(document.querySelector("#A-3-3"), {
+    type: "bar",
+    data: {
+      labels: ["High-Level", "Low-Level"],
+      datasets: [
+        {
+          label: "Task-Driven",
+          data: [23.79, 64.43],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgb(255, 99, 132)"
+        },
+        {
+          label: "Self-Instruct",
+          data: [23.56, 63.96],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 159, 64, 0.2)",
+          borderColor: "rgb(255, 159, 64)"
+        },
+        {
+          label: "OS-Genesis",
+          data: [34.21, 71.45],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 205, 86, 0.2)",
+          borderColor: "rgb(255, 205, 86)"
+        },
+        {
+          label: "Human",
+          data: [30.2, 64.42],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          borderColor: "rgb(75, 192, 192)"
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    },
+  });
+
+  new Chart(document.querySelector("#A-3-4"), {
+    type: "bar",
+    data: {
+      labels: ["High-Level", "Low-Level"],
+      datasets: [
+        {
+          label: "Task-Driven",
+          data: [38.84, 71.33],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgb(255, 99, 132)"
+        },
+        {
+          label: "Self-Instruct",
+          data: [37.3, 70.61],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 159, 64, 0.2)",
+          borderColor: "rgb(255, 159, 64)"
+        },
+        {
+          label: "OS-Genesis",
+          data: [44.27, 90.78],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(255, 205, 86, 0.2)",
+          borderColor: "rgb(255, 205, 86)"
+        },
+        {
+          label: "Human",
+          data: [42.41, 89.49],
+          borderWidth: 1.5,
+          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          borderColor: "rgb(75, 192, 192)"
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    },
+  });
+</script>
+
+</html>
