@@ -59,6 +59,7 @@
   <script defer src="./static/js/medium-zoom.min.js"></script>
   <script defer src="./static/js/zoom.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
   <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
 </head>
@@ -236,6 +237,8 @@
     </div>
 
     <div id="wrapper" class="text"></div>
+
+    <div style="width: 100%;"><canvas id="test-dist"></canvas></div>
 
     <p class="text abstract">
       <!-- <strong>vision-<i>centric</i></strong> -->
@@ -758,8 +761,8 @@
     <d-citation-list></d-citation-list>
   </d-appendix>
   <!-- bibliography will be inlined during Distill pipeline's pre-rendering -->
-  <d-bibliography src="bibliography.bib"></d-bibliography>
-  <script src="./static/js/nav-bar.js"></script>
+  <d-bibliography src="./bibliography.bib"></d-bibliography>
+  <!-- <script src="./static/js/nav-bar.js"></script> -->
 </body>
 
 
@@ -1013,17 +1016,112 @@
     },
   });
 
+  new Chart(document.querySelector("#test-dist"), {
+    type: "pie",
+    data: {
+      labels: [
+        "Metamath",
+        "Algebra",
+        "Geometry",
+        "Analysis",
+        "Open Problems",
+        "Direct Instructions",
+        "Basic Ops.",
+        "Adv. Knowledge",
+        "Comp. Reasoning",
+        "Software Config.",
+        "Struct. Analysis",
+        "Data Interp.",
+        "Struct. Prediction",
+        "Basic Settings",
+        "Spatial Reasoning",
+        "Data Queries",
+        "Simulation",
+        "Basic Manipulation",
+        "Map Display",
+        "Image Analysis",
+        "Data Editing",
+        "Basic Usage",
+        "Layout",
+        "Figure Editing",
+        "Lean4",
+        "Kalgebra",
+        "ChimeraX",
+        "Celestia",
+        "GrassGIS",
+        "TeXStudio"
+      ],
+      datasets: [
+        {
+          data: [5, 7, 5, 7, 2, 4, 7, 17, 3, 11, 8, 7, 3, 8, 12, 10, 3, 10, 13, 7, 4, 5, 5, 5],
+          backgroundColor: [
+            "#DCE7F2",
+            "#DCE7F2",
+            "#DCE7F2",
+            "#DCE7F2",
+            "#DCE7F2",
+            "#9AAED3",
+            "#9AAED3",
+            "#9AAED3",
+            "#9AAED3",
+            "#F6D4DA",
+            "#F6D4DA",
+            "#F6D4DA",
+            "#F6D4DA",
+            "#F9F0C8",
+            "#F9F0C8",
+            "#F9F0C8",
+            "#F9F0C8",
+            "#F2F2FB",
+            "#F2F2FB",
+            "#F2F2FB",
+            "#F2F2FB",
+            "#C1EBE3",
+            "#C1EBE3",
+            "#C1EBE3"
+          ],
+        },
+        {
+          data: [26, 31, 29, 33, 34, 16],
+          backgroundColor: [
+            "#BCD3E7",
+            "#6D8ABE",
+            "#EAB5BF",
+            "#F6DF9B",
+            "#E6E6FA",
+            "#A1D9C9"
+          ],
+        }
+      ]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        datalabels: {
+          formatter: (value, context) => {
+            return context.chart.data.labels[context.dataIndex] || '';
+          },
+          color: '#000',
+          font: {
+            weight: 'bold',
+            size: 10
+          }
+        }
+      }
+    },
+    plugins: [ChartDataLabels]
+  });
+
   new gridjs.Grid({
-    columns: ["Name", "Email", "Phone Number"],
+    columns: ["Model", "Accuracy", "Site"],
     sort: true,
     resizable: true,
     fixedHeader: true,
     data: [
-      ["John", "john@example.com", "(353) 01 222 3333"],
-      ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
-      ["Eoin", "eoin@gmail.com", "0097 22 654 00033"],
-      ["Sarah", "sarahcdd@gmail.com", "+322 876 1233"],
-      ["Afshin", "afshin@mail.com", "(353) 22 87 8356"]
+      ["GPT-4o", "0.01%", "..."],
+      ["InternVL-3", "101.00%", "梦里啥都有"],
     ]
   }).render(document.getElementById("wrapper"));
 </script>
