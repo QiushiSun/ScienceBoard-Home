@@ -59,6 +59,8 @@
   <script defer src="./static/js/medium-zoom.min.js"></script>
   <script defer src="./static/js/zoom.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -233,6 +235,7 @@
       </div>
     </div>
 
+    <div id="wrapper" class="text"></div>
 
     <p class="text abstract">
       <!-- <strong>vision-<i>centric</i></strong> -->
@@ -764,147 +767,6 @@
 <script>
   Chart.defaults.font.family = "Charter";
 
-  // new Chart(document.querySelector("#A-1-1"), {
-  //   type: "radar",
-  //   data: {
-  //     labels: [
-  //       "AC-Type(H)",
-  //       "AC-SR(H)",
-  //       "AW-SR",
-  //       "AC-Type(L)",
-  //       "AC-SR(L)"
-  //     ],
-  //     datasets: [
-  //       {
-  //         label: "TRM",
-  //         data: [44.54, 66.15, 74.17, 90.72, 17.41],
-  //         fill: true,
-  //         backgroundColor: "rgba(255, 99, 132, 0.2)",
-  //         borderColor: "rgb(255, 99, 132)",
-  //         pointBackgroundColor: "rgb(255, 99, 132)",
-  //         pointBorderColor: "#fff",
-  //         pointHoverBackgroundColor: "#fff",
-  //         pointHoverBorderColor: "rgb(255, 99, 132)"
-  //       },
-  //       {
-  //         label: "Labeler",
-  //         data: [44.19, 66.37, 75.82, 90.67, 16.52],
-  //         fill: true,
-  //         backgroundColor: "rgba(255, 159, 64, 0.2)",
-  //         borderColor: "rgb(255, 159, 64)",
-  //         pointBackgroundColor: "rgb(255, 159, 64)",
-  //         pointBorderColor: "#fff",
-  //         pointHoverBackgroundColor: "#fff",
-  //         pointHoverBorderColor: "rgb(255, 159, 64)"
-  //       },
-  //       {
-  //         label: "w/o RM",
-  //         data: [43.9, 65.75, 74.1, 91.11, 14.73],
-  //         fill: true,
-  //         backgroundColor: "rgba(255, 205, 86, 0.2)",
-  //         borderColor: "rgb(255, 205, 86)",
-  //         pointBackgroundColor: "rgb(255, 205, 86)",
-  //         pointBorderColor: "#fff",
-  //         pointHoverBackgroundColor: "#fff",
-  //         pointHoverBorderColor: "rgb(255, 205, 86)"
-  //       }
-  //     ]
-  //   },
-  //   options: {
-  //     responsive: true,
-  //     scales: {
-  //       r: {
-  //         min: 10,
-  //         max: 100,
-  //         ticks: {
-  //           stepSize: 15
-  //         }
-  //       }
-  //     },
-  //     elements: {
-  //       line: {
-  //         borderWidth: 3
-  //       }
-  //     },
-  //     plugins: {
-  //         title: {
-  //         display: true,
-  //         text: "Qwen-7B"
-  //       }
-  //     }
-  //   },
-  // });
-
-  // new Chart(document.querySelector("#A-1-2"), {
-  //   type: "radar",
-  //   data: {
-  //     labels: [
-  //       "AC-Type(H)",
-  //       "AC-SR(H)",
-  //       "AW-SR",
-  //       "AC-Type(L)",
-  //       "AC-SR(L)"
-  //     ],
-  //     datasets: [
-  //       {
-  //         label: "TRM",
-  //         data: [35.77, 64.57, 71.37, 91.27, 16.96],
-  //         fill: true,
-  //         backgroundColor: "rgba(255, 99, 132, 0.2)",
-  //         borderColor: "rgb(255, 99, 132)",
-  //         pointBackgroundColor: "rgb(255, 99, 132)",
-  //         pointBorderColor: "#fff",
-  //         pointHoverBackgroundColor: "#fff",
-  //         pointHoverBorderColor: "rgb(255, 99, 132)"
-  //       },
-  //       {
-  //         label: "Labeler",
-  //         data: [35.53, 63.61, 70.54, 90.57, 16.44],
-  //         fill: true,
-  //         backgroundColor: "rgba(255, 159, 64, 0.2)",
-  //         borderColor: "rgb(255, 159, 64)",
-  //         pointBackgroundColor: "rgb(255, 159, 64)",
-  //         pointBorderColor: "#fff",
-  //         pointHoverBackgroundColor: "#fff",
-  //         pointHoverBorderColor: "rgb(255, 159, 64)"
-  //       },
-  //       {
-  //         label: "w/o RM",
-  //         data: [34.04, 60.95, 66.85, 89.37, 16.37],
-  //         fill: true,
-  //         backgroundColor: "rgba(255, 205, 86, 0.2)",
-  //         borderColor: "rgb(255, 205, 86)",
-  //         pointBackgroundColor: "rgb(255, 205, 86)",
-  //         pointBorderColor: "#fff",
-  //         pointHoverBackgroundColor: "#fff",
-  //         pointHoverBorderColor: "rgb(255, 205, 86)"
-  //       }
-  //     ]
-  //   },
-  //   options: {
-  //     scales: {
-  //       r: {
-  //         min: 10,
-  //         max: 100,
-  //         ticks: {
-  //           stepSize: 15
-  //         }
-  //       }
-  //     },
-  //     elements: {
-  //       line: {
-  //         borderWidth: 3
-  //       }
-  //     },
-  //     plugins: {
-  //       title: {
-  //         display: true,
-  //         text: "InternVL2-8B"
-  //       }
-  //     }
-  //   },
-  // });
-
   new Chart(document.querySelector("#A-2"), {
     type: "line",
     maintainAspectRatio: false,
@@ -1150,6 +1012,20 @@
       }
     },
   });
+
+  new gridjs.Grid({
+    columns: ["Name", "Email", "Phone Number"],
+    sort: true,
+    resizable: true,
+    fixedHeader: true,
+    data: [
+      ["John", "john@example.com", "(353) 01 222 3333"],
+      ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
+      ["Eoin", "eoin@gmail.com", "0097 22 654 00033"],
+      ["Sarah", "sarahcdd@gmail.com", "+322 876 1233"],
+      ["Afshin", "afshin@mail.com", "(353) 22 87 8356"]
+    ]
+  }).render(document.getElementById("wrapper"));
 </script>
 
 </html>
