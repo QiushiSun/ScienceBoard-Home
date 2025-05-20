@@ -1001,41 +1001,45 @@
     },
   });
 
+  const outerLabels = [
+    "Metamath",
+    "Algebra",
+    "Geometry",
+    "Analysis",
+    "Open Prob.",
+    "Direct Inst.",
+    "Basic Ops.",
+    "Adv. Knowledge",
+    "Comp. Reasoning",
+    "Software Config.",
+    "Struct. Anly.",
+    "Data Interp.",
+    "Struct. Pred.",
+    "Basic Settings",
+    "Spatial Reasoning",
+    "Data Queries",
+    "Simulation",
+    "Basic Manip.",
+    "Map Display",
+    "Image Anly.",
+    "Data Editing",
+    "Basic Usage",
+    "Layout",
+    "Fig. Editing"
+  ];
+
+  innerLabels = [
+    "Lean4",
+    "Kalgebra",
+    "ChimeraX",
+    "Celestia",
+    "GrassGIS",
+    "TeXStudio"
+  ]
+
   new Chart(document.querySelector("#test-dist"), {
     type: "pie",
     data: {
-      labels: [
-        "Metamath",
-        "Algebra",
-        "Geometry",
-        "Analysis",
-        "Open Prob.",
-        "Direct Inst.",
-        "Basic Ops.",
-        "Adv. Knowledge",
-        "Comp. Reasoning",
-        "Software Config.",
-        "Struct. Anly.",
-        "Data Interp.",
-        "Struct. Pred.",
-        "Basic Settings",
-        "Spatial Reasoning",
-        "Data Queries",
-        "Simulation",
-        "Basic Manip.",
-        "Map Display",
-        "Image Anly.",
-        "Data Editing",
-        "Basic Usage",
-        "Layout",
-        "Figure Editing",
-        "Lean4",
-        "Kalgebra",
-        "ChimeraX",
-        "Celestia",
-        "GrassGIS",
-        "TeXStudio"
-      ],
       datasets: [
         {
           data: [5, 7, 5, 7, 2, 4, 7, 17, 3, 11, 8, 7, 3, 8, 12, 10, 3, 10, 13, 7, 4, 5, 5, 5],
@@ -1065,9 +1069,12 @@
             "#C1EBE3",
             "#C1EBE3"
           ],
+          datalabels: {
+            formatter: (value, context) => outerLabels[context.dataIndex]
+          }
         },
         {
-          data: [26, 31, 29, 33, 34, 16],
+          data: [26, 31, 29, 33, 34, 15],
           backgroundColor: [
             "#BCD3E7",
             "#6D8ABE",
@@ -1076,6 +1083,9 @@
             "#E6E6FA",
             "#A1D9C9"
           ],
+          datalabels: {
+            formatter: (value, context) => innerLabels[context.dataIndex]
+          }
         }
       ]
     },
@@ -1092,6 +1102,17 @@
           font: {
             weight: 'bold',
             size: 10
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: (context) => {
+              if (context.datasetIndex === 0) {
+                return outerLabels[context.dataIndex] + ": " + context.formattedValue;
+              } else if (context.datasetIndex === 1) {
+                return innerLabels[context.dataIndex] + ": " + context.formattedValue;
+              }
+            }
           }
         }
       }
