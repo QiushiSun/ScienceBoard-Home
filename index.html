@@ -1121,13 +1121,13 @@
   });
 
   new gridjs.Grid({
-    columns: ["Model", "Accuracy", "Site"],
+    columns: ["Settings", "% Alg.", "% Biochem.", "% GIS", "% ATP", "% Astron.", "% Doc.", "% Overall"],
     sort: true,
     resizable: true,
     fixedHeader: true,
     data: [
-      ["GPT-4o", "0.01%", "..."],
-      ["InternVL-3", "101.00%", "梦里啥都有"],
+      ["GPT-4o w/ Screenshot", "3.23", "0.00", "0.00", "0.00", "0.00", "6.25", "1.58"],
+      ["MODEL w/ OBS", "0.00", "0.00", "0.00", "0.00", "0.00", "6.25", "0.00"],
     ]
   }).render(document.getElementById("wrapper"));
 </script>
