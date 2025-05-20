@@ -47,8 +47,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
 </head>
 
 <body>
@@ -710,8 +709,8 @@
       </div>
     </div>
 
-    <div id="wrapper" class="text"></div>
-    <div style="width: 100%;"><canvas id="test-dist"></canvas></div>
+    <div class="text" id="leaderboard" style="height: 500px"></div>
+    <div class="text"><canvas id="test-dist"></canvas></div>
 
     <div id="conclusion" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
       <h2 class="text" style="margin-top:0px; margin-bottom:10px">Conclusion</h2>
@@ -1120,16 +1119,43 @@
     plugins: [ChartDataLabels]
   });
 
-  new gridjs.Grid({
-    columns: ["Settings", "% Alg.", "% Biochem.", "% GIS", "% ATP", "% Astron.", "% Doc.", "% Overall"],
-    sort: true,
-    resizable: true,
-    fixedHeader: true,
-    data: [
-      ["GPT-4o w/ Screenshot", "3.23", "0.00", "0.00", "0.00", "0.00", "6.25", "1.58"],
-      ["MODEL w/ OBS", "0.00", "0.00", "0.00", "0.00", "0.00", "6.25", "0.00"],
+  
+  const gridOptions = {
+    rowData: [
+      {
+        model: "GPT-4o w/ screenshot",
+        alg: "3.23",
+        bio: "0.00",
+        gis: "0.00",
+        atp: "0.00",
+        ast: "0.00",
+        doc: "6.25",
+        acc: "1.58",
+      },
+      {
+        model: "MODEL w/ OBS",
+        alg: "0.00",
+        bio: "0.00",
+        gis: "0.00",
+        atp: "0.00",
+        ast: "0.00",
+        doc: "0.00",
+        acc: "0.00"
+      },
+    ],
+    columnDefs: [
+      { field: "model", headerName: "Settings", flex: 2 },
+      { field: "acc", headerName: "% Overall", flex: 1, sort: "desc" },
+      { field: "alg", headerName: "% Alg.", flex: 1 },
+      { field: "bio", headerName: "% Biochem.", flex: 1 },
+      { field: "gis", headerName: "% GIS", flex: 1 },
+      { field: "atp", headerName: "% ATP", flex: 1 },
+      { field: "ast", headerName: "% Astron.", flex: 1 },
+      { field: "doc", headerName: "% Doc.", flex: 1 }
     ]
-  }).render(document.getElementById("wrapper"));
+  };
+  const myGridElement = document.querySelector("#leaderboard");
+  agGrid.createGrid(myGridElement, gridOptions);
 </script>
 
 </html>
