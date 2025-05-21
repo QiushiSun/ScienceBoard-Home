@@ -1123,35 +1123,115 @@
   const gridOptions = {
     rowData: [
       {
-        model: "GPT-4o w/ screenshot",
-        alg: "3.23",
-        bio: "0.00",
-        gis: "0.00",
-        atp: "0.00",
-        ast: "0.00",
-        doc: "6.25",
-        acc: "1.58",
+        model: "GPT-4o (2024-08-06) w/ screenshot",
+        alg: 3.23,
+        bio: 0.00,
+        gis: 0.00,
+        atp: 0.00,
+        ast: 0.00,
+        doc: 6.25,
+        acc: 1.58,
+      },
+      {
+        model: "Calude-3.7-Sonnet w/ screenshot",
+        alg: 9.67,
+        bio: 37.93,
+        gis: 2.94,
+        atp: 0.00,
+        ast: 6.06,
+        doc: 6.25,
+        acc: 10.48
+      },
+      {
+        model: "Gemini-2.0-Flash w/ screenshot",
+        alg: 6.45,
+        bio: 3.45,
+        gis: 2.94,
+        atp: 0.00,
+        ast: 0.00,
+        doc: 6.06,
+        acc: 3.15
+      },
+      {
+        model: "Qwen2.5-VL-72B w/ screenshot",
+        alg: 22.58,
+        bio: 27.59,
+        gis: 5.88,
+        atp: 0.00,
+        ast: 9.09,
+        doc: 12.50,
+        acc: 12.94
+      },
+      {
+        model: "InternVL3-78B w/ screenshot",
+        alg: 6.45,
+        bio: 3.45,
+        gis: 0.00,
+        atp: 0.00,
+        ast: 0.00,
+        doc: 6.25,
+        acc: 2.69
       },
       {
         model: "MODEL w/ OBS",
-        alg: "0.00",
-        bio: "0.00",
-        gis: "0.00",
-        atp: "0.00",
-        ast: "0.00",
-        doc: "0.00",
-        acc: "0.00"
+        alg: 0.00,
+        bio: 0.00,
+        gis: 0.00,
+        atp: 0.00,
+        ast: 0.00,
+        doc: 0.00,
+        acc: 0.00
       },
     ],
     columnDefs: [
-      { field: "model", headerName: "Settings", flex: 2 },
-      { field: "acc", headerName: "% Overall", flex: 1, sort: "desc" },
-      { field: "alg", headerName: "% Alg.", flex: 1 },
-      { field: "bio", headerName: "% Biochem.", flex: 1 },
-      { field: "gis", headerName: "% GIS", flex: 1 },
-      { field: "atp", headerName: "% ATP", flex: 1 },
-      { field: "ast", headerName: "% Astron.", flex: 1 },
-      { field: "doc", headerName: "% Doc.", flex: 1 }
+      {
+        field: "model",
+        headerName: "Settings",
+        flex: 2.5
+      },
+      {
+        field: "acc",
+        headerName: "% Acc",
+        flex: 1,
+        valueFormatter: (params) => params.value.toFixed(2),
+        sort: "desc"
+      },
+      {
+        field: "alg",
+        headerName: "% Alg",
+        flex: 1,
+        valueFormatter: (params) => params.value.toFixed(2),
+      },
+      {
+        field: "bio",
+        headerName: "% Biochem",
+        flex: 1,
+        valueFormatter: (params) => params.value.toFixed(2),
+      },
+      {
+        field: "gis",
+        headerName: "% GIS",
+        flex: 1,
+        valueFormatter: (params) => params.value.toFixed(2),
+      },
+      {
+        field: "atp",
+        headerName: "% ATP",
+        flex: 1,
+        valueFormatter: (params) => params.value.toFixed(2),
+      },
+      {
+        field: "ast",
+        headerName: "% Astron",
+        flex: 1,
+        valueFormatter: (params) => params.value.toFixed(2),
+      },
+      {
+        field: "doc",
+        headerName: "% Doc",
+        flex: 1,
+        valueFormatter: (params) => params.value.toFixed(2),
+      }
     ]
   };
   const myGridElement = document.querySelector("#leaderboard");
