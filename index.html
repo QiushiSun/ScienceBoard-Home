@@ -1145,8 +1145,8 @@
     const contains = (obs) => filterCondition[obs] && node.data.model.includes(obs);
     const hasInput = node.data.model.includes(filterCondition["input"]);
     return hasInput && (
-      contains("screenshot")
-        || contains("a11y_tree")
+      (contains("screenshot") && !node.data.model.includes("screenshot+a11y_tree"))
+        || (contains("a11y_tree") && !node.data.model.includes("screenshot+a11y_tree"))
         || contains("screenshot+a11y_tree")
         || contains("set_of_marks")
     );
