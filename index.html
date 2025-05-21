@@ -1341,6 +1341,38 @@
         ast: 0.00,
         doc: 0.00,
         acc: 2.18
+      },
+      {
+        model: "GPT-4o (2024-08-06) -> OS-Atlas-Pro-7B w/ screenshot",
+        alg: 6.25,
+        bio: 10.34,
+        gis: 0.00,
+        ast: 3.03,
+        acc: 4.92
+      },
+      {
+        model: "GPT-4o (2024-08-06) -> UGround-V1-7B w/ screenshot",
+        alg: 0.00,
+        bio: 3.45,
+        gis: 0.00,
+        ast: 3.03,
+        acc: 1.62
+      },
+      {
+        model: "GPT-4o (2024-08-06) -> Qwen2.5-VL-7B w/ screenshot",
+        alg: 12.50,
+        bio: 34.48,
+        gis: 11.76,
+        ast: 9.09,
+        acc: 16.96
+      },
+      {
+        model: "GPT-4o (2024-08-06) -> UI-TARS-72B w/ screenshot",
+        alg: 3.23,
+        bio: 10.34,
+        gis: 5.88,
+        ast: 6.06,
+        acc: 6.38
       }
     ],
     columnDefs: [
@@ -1353,44 +1385,44 @@
         field: "acc",
         headerName: "% Acc",
         flex: 1,
-        valueFormatter: (params) => params.value.toFixed(2),
+        valueFormatter: (params) => params.value?.toFixed(2),
         sort: "desc"
       },
       {
         field: "alg",
         headerName: "% Alg",
         flex: 1,
-        valueFormatter: (params) => params.value.toFixed(2),
+        valueFormatter: (params) => params.value?.toFixed(2),
       },
       {
         field: "bio",
         headerName: "% Biochem",
         flex: 1,
-        valueFormatter: (params) => params.value.toFixed(2),
+        valueFormatter: (params) => params.value?.toFixed(2),
       },
       {
         field: "gis",
         headerName: "% GIS",
         flex: 1,
-        valueFormatter: (params) => params.value.toFixed(2),
+        valueFormatter: (params) => params.value?.toFixed(2),
       },
       {
         field: "atp",
         headerName: "% ATP",
         flex: 1,
-        valueFormatter: (params) => params.value.toFixed(2),
+        valueFormatter: (params) => params.value?.toFixed(2),
       },
       {
         field: "ast",
         headerName: "% Astron",
         flex: 1,
-        valueFormatter: (params) => params.value.toFixed(2),
+        valueFormatter: (params) => params.value?.toFixed(2),
       },
       {
         field: "doc",
         headerName: "% Doc",
         flex: 1,
-        valueFormatter: (params) => params.value.toFixed(2),
+        valueFormatter: (params) => params.value?.toFixed(2),
       }
     ]
   };
