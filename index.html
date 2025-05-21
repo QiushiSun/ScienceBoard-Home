@@ -34,6 +34,7 @@
   <script src="./static/js/distill_template.v2.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
 
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/nav.css">
   <link rel="stylesheet" href="./static/css/style.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
@@ -710,7 +711,15 @@
       </div>
     </div>
 
-    <div class="text" id="leaderboard" style="height: 750px"></div>
+    <div class="text" style="display: flex; margin-top: 12px; margin-bottom: 8px;">
+      <button class="button is-active" onclick="externalOptionChange(this, 'screenshot')">Screenshot</button>
+      <button class="button is-active avoid-attach" onclick="externalOptionChange(this, 'a11y_tree')">A11y Tree</button>
+      <button class="button is-active avoid-attach" onclick="externalOptionChange(this, 'screenshot+a11y_tree')">Screenshot + A11y Tree</button>
+      <button class="button is-active avoid-attach" onclick="externalOptionChange(this, 'set_of_marks')">Set of Marks</button>
+      <input class="input avoid-attach" type="text" oninput="externalFilterChange(event)" placeholder="Search by keywords">
+    </div>
+    <div class="text" id="leaderboard" style="height: 750px; margin-top: 0;"></div>
+
     <div class="text"><canvas id="test-dist"></canvas></div>
 
     <div id="conclusion" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
@@ -1120,7 +1129,44 @@
     plugins: [ChartDataLabels]
   });
 
-  
+  let filterCondition = {
+    "screenshot": true,
+    "a11y_tree": true,
+    "screenshot+a11y_tree": true,
+    "set_of_marks": true,
+    "input": ""
+  };
+
+  const doesExternalFilterPass = (node) => {
+    if (!node.data) {
+      return true;
+    }
+
+    const contains = (obs) => filterCondition[obs] && node.data.model.includes(obs);
+    const hasInput = node.data.model.includes(filterCondition["input"]);
+    return hasInput && (
+      contains("screenshot")
+        || contains("a11y_tree")
+        || contains("screenshot+a11y_tree")
+        || contains("set_of_marks")
+    );
+  }
+
+  const externalOptionChange = (element, option) => {
+    if (element.classList.contains("is-active")) {
+      element.classList.remove("is-active");
+    } else {
+      element.classList.add("is-active");
+    }
+
+    filterCondition[option] = !filterCondition[option];
+    document.gridApi.onFilterChanged();
+  };
+
+  const externalFilterChange = (event) => {
+    document.gridApi.setGridOption("quickFilterText", event.target.value);
+  }
+
   const gridOptions = {
     rowData: [
       {
@@ -1425,10 +1471,12 @@
         flex: 1,
         valueFormatter: (params) => params.value?.toFixed(2),
       }
-    ]
+    ],
+    isExternalFilterPresent: () => true,
+    doesExternalFilterPass: doesExternalFilterPass
   };
   const myGridElement = document.querySelector("#leaderboard");
-  agGrid.createGrid(myGridElement, gridOptions);
+  document.gridApi = agGrid.createGrid(myGridElement, gridOptions);
 </script>
 
 </html>

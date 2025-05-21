@@ -1,3 +1,7 @@
 body {
     --ag-font-family: Charter, serif;
 }
+
+.avoid-attach {
+    margin-left: 6px;
+}
