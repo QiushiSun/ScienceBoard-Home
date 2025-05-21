@@ -714,7 +714,7 @@
     <div class="text" style="display: flex; margin-top: 12px; margin-bottom: 8px;">
       <button class="button is-active" onclick="externalOptionChange(this, 'screenshot')">Screenshot</button>
       <button class="button is-active avoid-attach" onclick="externalOptionChange(this, 'a11y_tree')">A11y Tree</button>
-      <button class="button is-active avoid-attach" onclick="externalOptionChange(this, 'screenshot + a11y_tree')">Screenshot + A11y Tree</button>
+      <button class="button is-active avoid-attach" onclick="externalOptionChange(this, 'screenshot+a11y_tree')">Screenshot + A11y Tree</button>
       <button class="button is-active avoid-attach" onclick="externalOptionChange(this, 'set_of_marks')">Set of Marks</button>
       <input class="input avoid-attach" type="text" oninput="externalFilterChange(event)" placeholder="Search by keywords">
     </div>
@@ -1132,7 +1132,7 @@
   let filterCondition = {
     "screenshot": true,
     "a11y_tree": true,
-    "screenshot + a11y_tree": true,
+    "screenshot+a11y_tree": true,
     "set_of_marks": true,
     "input": ""
   };
@@ -1147,7 +1147,7 @@
     return hasInput && (
       contains("screenshot")
         || contains("a11y_tree")
-        || contains("screenshot + a11y_tree")
+        || contains("screenshot+a11y_tree")
         || contains("set_of_marks")
     );
   }
