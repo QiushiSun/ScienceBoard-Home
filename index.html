@@ -153,15 +153,15 @@
               <span>Code</span>
             </a>
             <!-- <br> -->
-            <a href="https://huggingface.co/collections/OS-Copilot/os-genesis-6768d4b6fffc431dbf624c2d"
+            <!-- <a href="https://huggingface.co/collections/OS-Copilot/os-genesis-6768d4b6fffc431dbf624c2d"
               class="button" target="_blank">
               <span class="icon is-small">
                 <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo"
                   style="height: 1em;">
               </span>
               <span>Checkpoints</span>
-            </a>
-            <a href="https://huggingface.co/collections/OS-Copilot/os-genesis-6768d4b6fffc431dbf624c2d"
+            </a> -->
+            <a href="https://huggingface.co/datasets/OS-Copilot/ScienceBoard"
               class="button" target="_blank">
               <span class="icon is-small">
                 <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo"
@@ -268,39 +268,29 @@
 
 
     <p class="text abstract">
-      We will release all <a href="https://huggingface.co/collections/OS-Copilot/os-genesis-6768d4b6fffc431dbf624c2d" target="_blank">checkpoints</a>,
-      <a href="https://github.com/OS-Copilot/OS-Genesis" target="_blank">code</a>,
-      <a href="https://huggingface.co/collections/OS-Copilot/os-genesis-6768d4b6fffc431dbf624c2d" target="_blank">synthesized trajectories</a>,
-      and more details. We hope OS-Genesis can inspire and boost future research in building GUI agents.
+      We will release all <a href="https://huggingface.co/collections/OS-Copilot/os-genesis-6768d4b6fffc431dbf624c2d" target="_blank">codes for infra</a>,
+      <a href="https://github.com/OS-Copilot/OS-Genesis" target="_blank">benchmark</a>, evaluation pipelines and more details. We hope ScienceBoard can inspire and boost future research advancing computer-using agents in scientific workflows.
     </p>
 
-    <h1 class="text">GUI Trajectory Data</h1>
+    <h1 class="text">Computer-using Agents for Science</h1>
+
+
+    <img src="public/traj.gif" width="100%">
+
 
     <p class="text">
       Training with high-quality GUI trajectories is essential for enhancing agentic capabilities. Ideal GUI agent trajectories include the following key components:
     </p>
 
     <ol class="text">
-      <img src="public/traj.gif" width="40%" style="float: right; margin-left: 8px;">
       <li>a high-level instruction that defines the overall goal the agent aims to accomplish</li>
       <li>a series of low-level instructions that each describe specific steps required</li>
       <li>actions (e.g., CLICK, TYPE)</li>
       <li>states, which include visual representations like screenshots and textual representations such as a11ytree</li>
     </ol>
 
-    <h1 class="text">Interaction-Driven Functional Discovery</h1>
 
-    <p class="text">
-      Interaction-Driven Functional Discovery is a rule-based exploration process in OS-Genesis that systematically traverses dynamic GUI environments by interacting with UI elements (e.g., clicking, typing, scrolling). This approach uncovers diverse functionalities without relying on predefined tasks, collecting interaction triples that capture pre- and post-action states along with executed actions. These triples form the foundation for reverse task synthesis, enabling the generation of meaningful and executable task instructions. 
-    </p>
-
-    <h1 class="text">Reverse Task Synthesis</h1>
-
-    <p class="text">
-      Reverse Task Synthesis is a core component of OS-Genesis that transforms observed interaction triples—comprising pre- and post-action states and actions—into meaningful low-level and high-level task instructions. By retroactively interpreting changes in the GUI environment caused by actions, this process generates executable low-level instructions, which are then aggregated into broader, goal-oriented high-level tasks. This human-free approach bridges the gap between abstract instructions and dynamic GUI functionalities, enabling the creation of diverse, high-quality trajectories without reliance on predefined tasks or human supervision.
-    </p>
-
-    <h1 class="text">Exploration and Reward Modeling</h1>
+    <h1 class="text">ScienceBoard Environment</h1>
 
     <p class="text">
       After reverse task synthesis generates high-level and low-level task instructions, these instructions are executed within the GUI environment to create complete trajectories.
@@ -312,155 +302,37 @@
     To ensure the quality and utility of these trajectories, OS-Genesis employs a Trajectory Reward Model (TRM). Built upon GPT-4o, TRM evaluates each trajectory based on completion (task fulfillment) and coherence (logical sequence of actions), assigning a graded reward score from 1 to 5. Unlike traditional binary filtering methods, TRM allows even incomplete but valuable trajectories to contribute to training.
     </p>
 
+
+    <h1 class="text">ScienceBoard Benchmark</h1>
+
+    <p class="text">
+      After reverse task synthesis generates high-level and low-level task instructions, these instructions are executed within the GUI environment to create complete trajectories.
+    </p>
+
+    pie chart and table here
+
+
+    <p class="text">
+    To ensure the quality and utility of these trajectories, OS-Genesis employs a Trajectory Reward Model (TRM). Built upon GPT-4o, TRM evaluates each trajectory based on completion (task fulfillment) and coherence (logical sequence of actions), assigning a graded reward score from 1 to 5. Unlike traditional binary filtering methods, TRM allows even incomplete but valuable trajectories to contribute to training.
+    </p>
+
+
     <hr>
 
     
 
       <div id='visual-representation' class="viusal-representation-block">
-        <h1 class="text">Main Experiments </h1>
+        <h1 class="text">Evaluations </h1>
 
-        <h2 class="text">Mobile </h2>
+        <h2 class="text">Main Settings </h2>
 
         <p class="text">
           We first evaluate OS-Genesis on mobiles tasks, covering AndroidWorld<d-cite key="rawles2024androidworld"></d-cite> (in-domain setting) and AndroidControl<d-cite key="li2024effectsdatascaleui"></d-cite> (OOD setting).
           The results are shown in <a href="#tab:mobile">Table 1</a>
         </p>
-        
-        <div id="tab:mobile" style="display: flex; flex-direction: column; align-items: center;">
-          <div class="table-container">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th rowspan="2" class="tb-hdr">Base Model</th>
-                  <th rowspan="2" class="tb-hdr">Strategies</th>
-                  <th rowspan="2" class="tb-hdr">AndroidWorld</th>
-                  <th colspan="2" class="tb-hdr" style="border: 0;">AndroidControl-High</th>
-                  <th colspan="2" class="tb-hdr" style="border: 0;">AndroidControl-Low</th>
-                </tr>
-                <tr>
-                  <th class="tb-hdr">SR</th>
-                  <th class="tb-hdr">Type</th>
-                  <th class="tb-hdr">SR</th>
-                  <th class="tb-hdr">Type</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>GPT-4o</td>
-                  <td>Zero-Shot (M3A)</td>
-                  <td>23.70</td>
-                  <td>53.04</td>
-                  <td>69.14</td>
-                  <td>69.59</td>
-                  <td>80.27</td>
-                </tr>
-                <tr>
-                  <td rowspan="4">InternVL2-4B</td>
-                  <td>Zero-Shot</td>
-                  <td>0.00</td>
-                  <td>16.62</td>
-                  <td>39.96</td>
-                  <td>33.69</td>
-                  <td>60.65</td>
-                </tr>
-                <tr>
-                  <td>Task-Driven</td>
-                  <td>4.02</td>
-                  <td>27.37</td>
-                  <td>47.08</td>
-                  <td>66.48</td>
-                  <td>90.37</td>
-                </tr>
-                <tr>
-                  <td>Task-Driven w. Self Instruct</td>
-                  <td>7.14</td>
-                  <td>24.95</td>
-                  <td>44.27</td>
-                  <td>66.70</td>
-                  <td>90.79</td>
-                </tr>
-                <tr>
-                  <td>OS-Genesis</td>
-                  <td class="highlight">15.18</td>
-                  <td class="highlight">33.39</td>
-                  <td class="highlight">56.20</td>
-                  <td class="highlight">73.38</td>
-                  <td class="highlight">91.32</td>
-                </tr>
-                <tr>
-                  <td rowspan="4">InternVL2-8B</td>
-                  <td>Zero-Shot</td>
-                  <td>2.23</td>
-                  <td>17.89</td>
-                  <td>38.22</td>
-                  <td>47.69</td>
-                  <td>66.67</td>
-                </tr>
-                <tr>
-                  <td>Task-Driven</td>
-                  <td>4.46</td>
-                  <td>23.79</td>
-                  <td>43.94</td>
-                  <td>64.43</td>
-                  <td>89.83</td>
-                </tr>
-                <tr>
-                  <td>Task-Driven w. Self Instruct</td>
-                  <td>5.36</td>
-                  <td>23.43</td>
-                  <td>44.43</td>
-                  <td>64.69</td>
-                  <td>89.85</td>
-                </tr>
-                <tr>
-                  <td>OS-Genesis</td>
-                  <td class="highlight">16.96</td>
-                  <td class="highlight">35.77</td>
-                  <td class="highlight">64.57</td>
-                  <td class="highlight">71.37</td>
-                  <td class="highlight">91.27</td>
-                </tr>
-                <tr>
-                  <td rowspan="4">Qwen2-VL-7B</td>
-                  <td>Zero-Shot</td>
-                  <td>0.89</td>
-                  <td>28.92</td>
-                  <td>61.39</td>
-                  <td>46.37</td>
-                  <td>72.78</td>
-                </tr>
-                <tr>
-                  <td>Task-Driven</td>
-                  <td>6.25</td>
-                  <td>38.84</td>
-                  <td>58.08</td>
-                  <td>71.33</td>
-                  <td>88.71</td>
-                </tr>
-                <tr>
-                  <td>Task-Driven w. Self Instruct</td>
-                  <td>9.82</td>
-                  <td>39.36</td>
-                  <td>58.28</td>
-                  <td>71.57</td>
-                  <td>89.73</td>
-                </tr>
-                <tr>
-                  <td>OS-Genesis</td>
-                  <td class="highlight">17.41</td>
-                  <td class="highlight">44.54</td>
-                  <td class="highlight">66.15</td>
-                  <td class="highlight">74.17</td>
-                  <td class="highlight">90.72</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <figcaption style="text-align: center; width: 140%;">
-            Table 1: Performance on AndroidWorld and AndroidControl benchmarks.
-          </figcaption>
-        </div>
 
+        chart here
+        
         <p class="text">
           <strong>AndroidWorld:</strong> OS-Genesis demonstrates exceptional performance on the AndroidWorld benchmark, significantly narrowing the gap between open-source agents and the state-of-the-art GPT-4o-based M3A agent. Training with OS-Genesis-synthesized data achieves nearly double the success rates compared to task-driven methods, with a success rate improvement from 9.82% to 17.41% for Qwen2-VL-7B and substantial gains for other backbones like InternVL2-8B.</li>
         </p>
@@ -468,7 +340,7 @@
           <strong>AndroidControl:</strong> On AndroidControl, OS-Genesis showcases strong OOD capability, outperforming baselines in both high/low-level tasks despite encountering only 20 of 833 apps during synthesis. It achieves superior action and planning, validating our exploration-first approach for generating diverse, high-quality tasks and adapting effectively to unseen environments.
         </p>
 
-        <h2 class="text">Web </h2>
+        <h2 class="text">Disentangled Planning and Action </h2>
         <p class="text">
           Then, we evaluate OS-Genesis on web task, using challenging online benchmark: WebArena<d-cite key="zhou2024webarena"></d-cite> as the testbed.
           The results are shown in <a href="#tab:mobile">Table 2</a>
@@ -478,151 +350,8 @@
           <strong>WebArena:</strong> On WebArena, OS-Genesis delivers notable performance improvements across diverse 5 navigation scenarios, outperforming task-driven baselines and achieving significant gains with InternVL2-8B and Qwen2-VL-7B backbones. By leveraging reverse task synthesis, OS-Genesis effectively explores the rich interactive elements of web environments, producing more meaningful and diverse trajectories.
         </p>
 
-        <div id="tab:mobile" style="display: flex; flex-direction: column; align-items: center;">
-          <div class="table-container">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th class="tb-hdr">Base Model</th>
-                  <th class="tb-hdr">Strategies</th>
-                  <th class="tb-hdr">Shopping</th>
-                  <th class="tb-hdr">CMS</th>
-                  <th class="tb-hdr">Reddit</th>
-                  <th class="tb-hdr">Gitlab</th>
-                  <th class="tb-hdr">Maps</th>
-                  <th class="tb-hdr">Overall</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>GPT-4o</td>
-                  <td>Zero-Shot</td>
-                  <td>14.28</td>
-                  <td>21.05</td>
-                  <td>6.25</td>
-                  <td>14.29</td>
-                  <td>20.00</td>
-                  <td>16.25</td>
-                </tr>
-                <tr>
-                  <td rowspan="4">InternVL2-4B</td>
-                  <td>Zero-Shot</td>
-                  <td>0.00</td>
-                  <td>0.00</td>
-                  <td>0.00</td>
-                  <td>0.00</td>
-                  <td>0.00</td>
-                  <td>0.00</td>
-                </tr>
-                <tr>
-                  <td>Task-Driven</td>
-                  <td>5.36</td>
-                  <td>1.76</td>
-                  <td>0.00</td>
-                  <td class="highlight">9.52</td>
-                  <td>5.00</td>
-                  <td>4.98</td>
-                </tr>
-                <tr>
-                  <td>Task-Driven w. Self Instruct</td>
-                  <td>5.36</td>
-                  <td>3.51</td>
-                  <td>0.00</td>
-                  <td class="highlight">9.52</td>
-                  <td>7.50</td>
-                  <td>5.81</td>
-                </tr>
-                <tr>
-                  <td>OS-Genesis</td>
-                  <td class="highlight">10.71</td>
-                  <td class="highlight">7.02</td>
-                  <td class="highlight">3.13</td>
-                  <td>7.94</td>
-                  <td class="highlight">7.50</td>
-                  <td class="highlight">7.88</td>
-                </tr>
-                <tr>
-                  <td rowspan="4">InternVL2-8B</td>
-                  <td>Zero-Shot</td>
-                  <td>0.00</td>
-                  <td>0.00</td>
-                  <td>0.00</td>
-                  <td>0.00</td>
-                  <td>0.00</td>
-                  <td>0.00</td>
-                </tr>
-                <tr>
-                  <td>Task-Driven</td>
-                  <td>3.57</td>
-                  <td>7.02</td>
-                  <td>0.00</td>
-                  <td>6.35</td>
-                  <td>2.50</td>
-                  <td>4.56</td>
-                </tr>
-                <tr>
-                  <td>Task-Driven w. Self Instruct</td>
-                  <td class="highlight">8.93</td>
-                  <td>10.53</td>
-                  <td>6.25</td>
-                  <td class="highlight">7.94</td>
-                  <td>0.00</td>
-                  <td>7.05</td>
-                </tr>
-                <tr>
-                  <td>OS-Genesis</td>
-                  <td>7.14</td>
-                  <td class="highlight">15.79</td>
-                  <td class="highlight">9.34</td>
-                  <td>6.35</td>
-                  <td class="highlight">10.00</td>
-                  <td class="highlight">9.96</td>
-                </tr>
-                <tr>
-                  <td rowspan="4">Qwen2-VL-7B</td>
-                  <td>Zero-Shot</td>
-                  <td class="highlight">12.50</td>
-                  <td>7.02</td>
-                  <td>6.25</td>
-                  <td>6.35</td>
-                  <td>5.00</td>
-                  <td>7.47</td>
-                </tr>
-                <tr>
-                  <td>Task-Driven</td>
-                  <td>8.93</td>
-                  <td>7.02</td>
-                  <td>6.25</td>
-                  <td>6.35</td>
-                  <td>5.00</td>
-                  <td>7.05</td>
-                </tr>
-                <tr>
-                  <td>Task-Driven w. Self Instruct</td>
-                  <td>8.93</td>
-                  <td>1.76</td>
-                  <td>3.13</td>
-                  <td>4.84</td>
-                  <td class="highlight">7.50</td>
-                  <td>5.39</td>
-                </tr>
-                <tr>
-                  <td>OS-Genesis</td>
-                  <td>7.14</td>
-                  <td class="highlight">8.77</td>
-                  <td class="highlight">15.63</td>
-                  <td class="highlight">15.87</td>
-                  <td>5.00</td>
-                  <td class="highlight">10.79</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <figcaption style="text-align: center; width: 140%;">
-            Table 2: Performance on WebArena benchmarks.
-          </figcaption>
-        </div>
-      </div>
+        Chart here, GPT4o + x
+
 
       <div>
         <h1 class="text">Analysis</h1>
