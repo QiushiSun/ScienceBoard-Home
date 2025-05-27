@@ -430,6 +430,8 @@
 
     <div class="text" style="width: 100%;"><canvas id="test-dist"></canvas></div>
 
+    <div class="text" id="leaderboard-seeact" style="height: 750px;"></div>
+
     <div id="conclusion" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
       <h2 class="text" style="margin-top:0px; margin-bottom:10px">Conclusion</h2>
       <p class="text">
@@ -1091,7 +1093,66 @@
         ast: 0.00,
         doc: 0.00,
         acc: 2.18
+      }
+    ],
+    columnDefs: [
+      {
+        field: "model",
+        headerName: "Settings",
+        flex: 3
       },
+      {
+        field: "acc",
+        headerName: "% Acc",
+        flex: 1,
+        valueFormatter: (params) => params.value?.toFixed(2),
+        sort: "desc"
+      },
+      {
+        field: "alg",
+        headerName: "% Alg",
+        flex: 1,
+        valueFormatter: (params) => params.value?.toFixed(2),
+      },
+      {
+        field: "bio",
+        headerName: "% Biochem",
+        flex: 1,
+        valueFormatter: (params) => params.value?.toFixed(2),
+      },
+      {
+        field: "gis",
+        headerName: "% GIS",
+        flex: 1,
+        valueFormatter: (params) => params.value?.toFixed(2),
+      },
+      {
+        field: "atp",
+        headerName: "% ATP",
+        flex: 1,
+        valueFormatter: (params) => params.value?.toFixed(2),
+      },
+      {
+        field: "ast",
+        headerName: "% Astron",
+        flex: 1,
+        valueFormatter: (params) => params.value?.toFixed(2),
+      },
+      {
+        field: "doc",
+        headerName: "% Doc",
+        flex: 1,
+        valueFormatter: (params) => params.value?.toFixed(2),
+      }
+    ],
+    isExternalFilterPresent: () => true,
+    doesExternalFilterPass: doesExternalFilterPass
+  };
+  const myGridElement = document.querySelector("#leaderboard");
+  document.gridApi = agGrid.createGrid(myGridElement, gridOptions);
+
+  const gridOptionsSeeact = {
+    rowData: [
       {
         model: "GPT-4o (2024-08-06) -> OS-Atlas-Pro-7B w/ screenshot",
         alg: 6.25,
@@ -1178,8 +1239,8 @@
     isExternalFilterPresent: () => true,
     doesExternalFilterPass: doesExternalFilterPass
   };
-  const myGridElement = document.querySelector("#leaderboard");
-  document.gridApi = agGrid.createGrid(myGridElement, gridOptions);
+  const myGridElementSeeact = document.querySelector("#leaderboard-seeact");
+  document.gridApi = agGrid.createGrid(myGridElementSeeact, gridOptionsSeeact);
 </script>
 
 </html>
