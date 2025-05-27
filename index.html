@@ -107,7 +107,7 @@
           <h2>Evaluating Multimodal Autonomous Agents<br>
             in Realistic Scientific Workflows</h2>
           <p>
-            Introducing OS-Genesis, a
+            Introducing ScienceBoard, a
             <em><strong>manual-free</strong></em>
             data pipeline for synthesizing GUI agent trajectory. OS-Genesis is characterized by the following
             core features:
@@ -139,7 +139,7 @@
 
           <div class="button-container">
             <!-- replace arxiv -->
-            <a href="https://arxiv.org/abs/2412.19723" class="button paper-link" target="_blank">
+            <a href="https://arxiv.org/abs/2505.19897" class="button paper-link" target="_blank">
               <span class="icon is-small">
                 <i class="ai ai-arxiv"></i>
               </span>
@@ -233,11 +233,11 @@
       <br><br>
       OS-Genesis is built around the following components, aiming for synthesizing high-quality trajectory data for GUI agents:
     <ol class="text">
-      <li><strong><a href="#visual_representations">&sect;Interaction-Driven Functional Discovery</a></strong>: A rule-based process systematically interacts with GUIs to uncover functionalities without pre-defined tasks.</li>
+      <li><strong><a href="#visual_representations">&sect;Computer-using Agents for Scientific Discovery</a></strong>: A rule-based process systematically interacts with GUIs to uncover functionalities without pre-defined tasks.</li>
       <li><strong><a href="#connector_design">&sect;Reverse Task Synthesis</a></strong>: Converts triples (pre- and post-action states, actions) into low-level instructions and associate them with high-level tasks. This retrospective approach bridges the gap between dynamic GUI functionalities and executable trajectories
       </li>
       <li><strong><a href="#instruction_data">&sect;Trajectory Reward Model</a></strong>: Evaluates synthesized trajectories using a graded scoring system that measures task completion and action coherence. This ensures the retention of valuable incomplete trajectories while maintaining high data quality.</li>
-      <li><strong><a href="#sec:benchmarking">&sect;Performance</a></strong>: We examine existing online benchmarks like AndroidWorld and WebArena. OS-Genesis achieves notable performance gains, closing the gap with human-annotated data.</li>
+      <li><strong><a href="#sec:benchmarking">&sect;Extensive Evaluation</a></strong>: We examine existing online benchmarks like AndroidWorld and WebArena. OS-Genesis achieves notable performance gains, closing the gap with human-annotated data.</li>
     </ol>
     </p>
 
@@ -737,7 +737,7 @@
     <div id="Acknowledgement" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
       <h2 class="text" style="margin-top:0px; margin-bottom:10px">Acknowledgement</h2>
       <p class="text">
-        We would like to thank <a href="https://github.com/google-research/android_world" target="_blank">AndroidWorld</a> authors for helping us tackle various issues in dynamic environments, as well as the <a href="https://cambrian-mllm.github.io/" target="_blank">Cambrian</a> authors for providing this webpage template.
+        We would like to thank <a href="https://github.com/xlang-ai/OSWorld" target="_blank">OSWorld</a> authors for helping us tackle various issues in building infra and task evaluation, as well as the <a href="https://cambrian-mllm.github.io/" target="_blank">Cambrian</a> authors for providing this webpage template.
       </p>
     </div>    
 
@@ -745,12 +745,11 @@
   <d-appendix>
     <h3>BibTeX</h3>
     <p class="bibtex">
-      @article{sun2024osgenesis,<br>
-      &nbsp;&nbsp;title={OS-Genesis: Automating GUI Agent Trajectory Construction via Reverse Task
-      Synthesis},<br>
-      &nbsp;&nbsp;author={Sun, Qiushi and Cheng, Kanzhi and Ding, Zichen and Jin, Chuanyang and Wang, Yian and Xu, Fangzhi and Wu, Zhenyu and Jia, Chengyou and Chen, Liheng and Liu, Zhoumianze and others},<br>
-      &nbsp;&nbsp;journal={arXiv preprint arXiv:2412.19723},<br>
-      &nbsp;&nbsp;year={2024}<br>
+      @article{sun2025scienceboard, <br>
+        &nbsp;&nbsp; title={ScienceBoard: Evaluating Multimodal Autonomous Agents in Realistic Scientific Workflows}, <br>
+        &nbsp;&nbsp; author={Qiushi Sun and Zhoumianze Liu and Chang Ma and Zichen Ding and Fangzhi Xu and Zhangyue Yin and Haiteng Zhao and Zhenyu Wu and Kanzhi Cheng and Zhaoyang Liu and others}, <br>
+        &nbsp;&nbsp; year={2025}, <br>
+        &nbsp;&nbsp; journal={arXiv preprint arXiv:2505.19897}
       }
     </p>
 
@@ -760,7 +759,6 @@
   <!-- bibliography will be inlined during Distill pipeline's pre-rendering -->
   <d-bibliography src="./bibliography.bib"></d-bibliography>
 </body>
-
 
 
 <script>
