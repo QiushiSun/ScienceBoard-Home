@@ -103,7 +103,7 @@
       </nav>
       <div class="header-container" id="header-container">
         <div class="header-content">
-          <h1 style="margin-top: 0px"><i>ScienceBoard</i></h1>
+          <h1 style="margin-top: 0px; "><i>ScienceBoard</i></h1>
           <h2>Evaluating Multimodal Autonomous Agents<br>
             in Realistic Scientific Workflows</h2>
           <p>
@@ -221,16 +221,16 @@
 
     <p class="text abstract">
       <!-- <strong>vision-<i>centric</i></strong> -->
-      We introduce OS-Genesis, an interaction-driven pipeline that synthesizes high-quality and diverse GUI agent trajectory data without human supervision. By leveraging reverse task synthesis, OS-Genesis enables effective training of GUI agents to achieve superior performance on dynamic benchmarks such as AndroidWorld and WebArena.
+      We introduce ScienceBoard, a realistic and multimodal environment designed to evaluate and advance computer-using agents for scientific discovery. By integrating domain-specific software and curating a benchmark of validated workflows, ScienceBoard enables rigorous assessment of agents’ abilities to operate in real scientific settings.
 
       <br><br>
       OS-Genesis is built around the following components, aiming for synthesizing high-quality trajectory data for GUI agents:
     <ol class="text">
-      <li><strong><a href="#visual_representations">&sect;Computer-using Agents for Scientific Discovery</a></strong>: A rule-based process systematically interacts with GUIs to uncover functionalities without pre-defined tasks.</li>
-      <li><strong><a href="#connector_design">&sect;Reverse Task Synthesis</a></strong>: Converts triples (pre- and post-action states, actions) into low-level instructions and associate them with high-level tasks. This retrospective approach bridges the gap between dynamic GUI functionalities and executable trajectories
+      <li><strong><a href="#visual_representations">&sect;Computer-using Agents for Scientific Discovery</a></strong>: ScienceBoard pioneers the application of computer-using agents to real-world scientific discovery, enabling digital automation for complex science tasks.</li>
+      <li><strong><a href="#connector_design">&sect;Infra for Scientific Discovery</a></strong>: ScienceBoard provides a visually rich and dynamically configurable Ubuntu-based VM serves as the scientific playground, supporting both GUI and CLI interactions and enabling agents to perform end-to-end tasks like simulation and computation.
       </li>
-      <li><strong><a href="#instruction_data">&sect;Trajectory Reward Model</a></strong>: Evaluates synthesized trajectories using a graded scoring system that measures task completion and action coherence. This ensures the retention of valuable incomplete trajectories while maintaining high data quality.</li>
-      <li><strong><a href="#sec:benchmarking">&sect;Extensive Evaluation</a></strong>: We examine existing online benchmarks like AndroidWorld and WebArena. OS-Genesis achieves notable performance gains, closing the gap with human-annotated data.</li>
+      <li><strong><a href="#instruction_data">&sect;Challenging Benchmark</a></strong>: We curate a benchmark of 169 human-annotated tasks across 6 scientific domains, each paired with automated evaluation functions for reliable task validation.</li>
+      <li><strong><a href="#sec:benchmarking">&sect;Systematic Evaluation and Analysis</a></strong>: Comprehensive experiments are conducted with state-of-the-art LLMs, VLMs, and GUI action models. We further provide insights into current agent limitations and guiding future research.</li>
     </ol>
     </p>
 
