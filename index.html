@@ -430,7 +430,7 @@
 
     <div class="text" style="width: 100%;"><canvas id="test-dist"></canvas></div>
 
-    <div class="text" id="leaderboard-seeact" style="height: 750px;"></div>
+    <div class="text" id="leaderboard-seeact" style="height: 450px;"></div>
 
     <div id="conclusion" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
       <h2 class="text" style="margin-top:0px; margin-bottom:10px">Conclusion</h2>
@@ -1190,7 +1190,7 @@
       {
         field: "model",
         headerName: "Settings",
-        flex: 3
+        flex: 5
       },
       {
         field: "acc",
@@ -1218,20 +1218,8 @@
         valueFormatter: (params) => params.value?.toFixed(2),
       },
       {
-        field: "atp",
-        headerName: "% ATP",
-        flex: 1,
-        valueFormatter: (params) => params.value?.toFixed(2),
-      },
-      {
         field: "ast",
         headerName: "% Astron",
-        flex: 1,
-        valueFormatter: (params) => params.value?.toFixed(2),
-      },
-      {
-        field: "doc",
-        headerName: "% Doc",
         flex: 1,
         valueFormatter: (params) => params.value?.toFixed(2),
       }
