@@ -5,3 +5,7 @@ body {
 .avoid-attach {
     margin-left: 6px;
 }
+
+h1 {
+    font-weight: 700;
+}
