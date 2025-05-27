@@ -294,15 +294,11 @@
       Interaction-Driven Functional Discovery is a rule-based exploration process in OS-Genesis that systematically traverses dynamic GUI environments by interacting with UI elements (e.g., clicking, typing, scrolling). This approach uncovers diverse functionalities without relying on predefined tasks, collecting interaction triples that capture pre- and post-action states along with executed actions. These triples form the foundation for reverse task synthesis, enabling the generation of meaningful and executable task instructions. 
     </p>
 
-    <img src="public/sub-1.gif" width="100%">
-
     <h1 class="text">Reverse Task Synthesis</h1>
 
     <p class="text">
       Reverse Task Synthesis is a core component of OS-Genesis that transforms observed interaction triples—comprising pre- and post-action states and actions—into meaningful low-level and high-level task instructions. By retroactively interpreting changes in the GUI environment caused by actions, this process generates executable low-level instructions, which are then aggregated into broader, goal-oriented high-level tasks. This human-free approach bridges the gap between abstract instructions and dynamic GUI functionalities, enabling the creation of diverse, high-quality trajectories without reliance on predefined tasks or human supervision.
     </p>
-
-    <img src="public/sub-2.gif" width="100%">
 
     <h1 class="text">Exploration and Reward Modeling</h1>
 
@@ -310,7 +306,7 @@
       After reverse task synthesis generates high-level and low-level task instructions, these instructions are executed within the GUI environment to create complete trajectories.
     </p>
 
-    <img src="public/explore-and-reward.gif" width="100%">
+    <img src="public/arch.gif" width="100%">
 
     <p class="text">
     To ensure the quality and utility of these trajectories, OS-Genesis employs a Trajectory Reward Model (TRM). Built upon GPT-4o, TRM evaluates each trajectory based on completion (task fulfillment) and coherence (logical sequence of actions), assigning a graded reward score from 1 to 5. Unlike traditional binary filtering methods, TRM allows even incomplete but valuable trajectories to contribute to training.
