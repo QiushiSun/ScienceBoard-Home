@@ -328,10 +328,17 @@
 
         <p class="text">
           We first evaluate OS-Genesis on mobiles tasks, covering AndroidWorld<d-cite key="rawles2024androidworld"></d-cite> (in-domain setting) and AndroidControl<d-cite key="li2024effectsdatascaleui"></d-cite> (OOD setting).
-          The results are shown in <a href="#tab:mobile">Table 1</a>
+          The results are shown in <a href="#leaderboard">Table 1</a>
         </p>
 
-        chart here
+        <div class="text" style="display: flex; margin-top: 12px; margin-bottom: 8px;">
+          <button class="button is-active" onclick="externalOptionChange(this, 'screenshot')">Screenshot</button>
+          <button class="button is-active avoid-attach" onclick="externalOptionChange(this, 'a11y_tree')">A11y Tree</button>
+          <button class="button is-active avoid-attach" onclick="externalOptionChange(this, 'screenshot+a11y_tree')">Screenshot + A11y Tree</button>
+          <button class="button is-active avoid-attach" onclick="externalOptionChange(this, 'set_of_marks')">Set of Marks</button>
+          <input class="input avoid-attach" type="text" oninput="externalFilterChange(event)" placeholder="Search by keywords">
+        </div>
+        <div class="text" id="leaderboard" style="height: 750px; margin-top: 0;"></div>
         
         <p class="text">
           <strong>AndroidWorld:</strong> OS-Genesis demonstrates exceptional performance on the AndroidWorld benchmark, significantly narrowing the gap between open-source agents and the state-of-the-art GPT-4o-based M3A agent. Training with OS-Genesis-synthesized data achieves nearly double the success rates compared to task-driven methods, with a success rate improvement from 9.82% to 17.41% for Qwen2-VL-7B and substantial gains for other backbones like InternVL2-8B.</li>
@@ -343,14 +350,14 @@
         <h2 class="text">Disentangled Planning and Action </h2>
         <p class="text">
           Then, we evaluate OS-Genesis on web task, using challenging online benchmark: WebArena<d-cite key="zhou2024webarena"></d-cite> as the testbed.
-          The results are shown in <a href="#tab:mobile">Table 2</a>
+          The results are shown in <a href="#leaderboard-seeact">Table 2</a>
         </p>
 
         <p class="text">
           <strong>WebArena:</strong> On WebArena, OS-Genesis delivers notable performance improvements across diverse 5 navigation scenarios, outperforming task-driven baselines and achieving significant gains with InternVL2-8B and Qwen2-VL-7B backbones. By leveraging reverse task synthesis, OS-Genesis effectively explores the rich interactive elements of web environments, producing more meaningful and diverse trajectories.
         </p>
 
-        Chart here, GPT4o + x
+        <div class="text" id="leaderboard-seeact" style="height: 450px;"></div>
 
 
       <div>
@@ -419,18 +426,7 @@
       </div>
     </div>
 
-    <div class="text" style="display: flex; margin-top: 12px; margin-bottom: 8px;">
-      <button class="button is-active" onclick="externalOptionChange(this, 'screenshot')">Screenshot</button>
-      <button class="button is-active avoid-attach" onclick="externalOptionChange(this, 'a11y_tree')">A11y Tree</button>
-      <button class="button is-active avoid-attach" onclick="externalOptionChange(this, 'screenshot+a11y_tree')">Screenshot + A11y Tree</button>
-      <button class="button is-active avoid-attach" onclick="externalOptionChange(this, 'set_of_marks')">Set of Marks</button>
-      <input class="input avoid-attach" type="text" oninput="externalFilterChange(event)" placeholder="Search by keywords">
-    </div>
-    <div class="text" id="leaderboard" style="height: 750px; margin-top: 0;"></div>
-
     <div class="text" style="width: 100%;"><canvas id="test-dist"></canvas></div>
-
-    <div class="text" id="leaderboard-seeact" style="height: 450px;"></div>
 
     <div id="conclusion" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
       <h2 class="text" style="margin-top:0px; margin-bottom:10px">Conclusion</h2>
@@ -1148,8 +1144,8 @@
     isExternalFilterPresent: () => true,
     doesExternalFilterPass: doesExternalFilterPass
   };
-  const myGridElement = document.querySelector("#leaderboard");
-  document.gridApi = agGrid.createGrid(myGridElement, gridOptions);
+  const gridElement = document.querySelector("#leaderboard");
+  document.gridApi = agGrid.createGrid(gridElement, gridOptions);
 
   const gridOptionsSeeact = {
     rowData: [
@@ -1227,8 +1223,8 @@
     isExternalFilterPresent: () => true,
     doesExternalFilterPass: doesExternalFilterPass
   };
-  const myGridElementSeeact = document.querySelector("#leaderboard-seeact");
-  document.gridApi = agGrid.createGrid(myGridElementSeeact, gridOptionsSeeact);
+  const gridElementSeeact = document.querySelector("#leaderboard-seeact");
+  agGrid.createGrid(gridElementSeeact, gridOptionsSeeact);
 </script>
 
 </html>
