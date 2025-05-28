@@ -274,40 +274,38 @@
 
     <h1 class="text">Computer-using Agents for Science</h1>
 
+    <p class="text">
+      Large Language Models (LLMs) and Vision-Language Models (VLMs) have significantly advanced the development of autonomous agents capable of interacting with digital systems. Recent progress in computer-using agents—agents that operate through GUI and CLI interfaces—has unlocked new possibilities for automating complex workflows in domains like software engineering and web navigation.
+
+      ScienceBoard is the first to extend this paradigm to scientific discovery, a domain where agents must not only operate software, but also demonstrate domain understanding, precise control, and multi-step reasoning. From simulating planetary motion in Celestia to manipulating molecular structures in ChimeraX, scientific tasks require agents to execute precise interactions grounded in both visual perception and scientific knowledge.
+    </p>
 
     <img src="public/traj.gif" width="100%">
 
 
     <p class="text">
-      Training with high-quality GUI trajectories is essential for enhancing agentic capabilities. Ideal GUI agent trajectories include the following key components:
+      computer-using agents in ScienceBoard can simulate the real behavior of human scientists operating complex tools. This foundation sets the stage for developing AI co-scientists that can assist, or even automate the scientific research lifecycle.
     </p>
-
-    <ol class="text">
-      <li>a high-level instruction that defines the overall goal the agent aims to accomplish</li>
-      <li>a series of low-level instructions that each describe specific steps required</li>
-      <li>actions (e.g., CLICK, TYPE)</li>
-      <li>states, which include visual representations like screenshots and textual representations such as a11ytree</li>
-    </ol>
 
 
     <h1 class="text">ScienceBoard Environment</h1>
 
     <p class="text">
-      After reverse task synthesis generates high-level and low-level task instructions, these instructions are executed within the GUI environment to create complete trajectories.
+      The ScienceBoard Environment offers a dynamic, multimodal platform where agents interact with real scientific software in a virtualized desktop. Built on an Ubuntu-based virtual machine, this environment integrates graphical and command-line interfaces, enabling agents to complete tasks just as human researchers would—by clicking, typing, or issuing terminal commands.
     </p>
 
     <img src="public/arch.gif" width="100%">
 
     <p class="text">
-    To ensure the quality and utility of these trajectories, OS-Genesis employs a Trajectory Reward Model (TRM). Built upon GPT-4o, TRM evaluates each trajectory based on completion (task fulfillment) and coherence (logical sequence of actions), assigning a graded reward score from 1 to 5. Unlike traditional binary filtering methods, TRM allows even incomplete but valuable trajectories to contribute to training.
+      Each software is carefully integrated and adapted to expose internal application states, allowing for fine-grained state tracking and automatic evaluation. Agents perceive the environment through textual (a11ytree), visual (screenshot), or hybrid observation modalities, and operate via a unified action space covering GUI actions, CLI commands, and external API calls.
     </p>
 
 
     <h1 class="text">ScienceBoard Benchmark</h1>
 
     <p class="text">
-      After reverse task synthesis generates high-level and low-level task instructions, these instructions are executed within the GUI environment to create complete trajectories.
-    </p>
+      The ScienceBoard Benchmark is a curated suite of 169 high-quality tasks spanning six scientific domains, designed to rigorously evaluate the capabilities of computer-using agents in realistic research scenarios. Each task reflects real-world challenges encountered in scientific workflows, ranging from molecular structure analysis to geospatial modeling and formal proof construction.
+        </p>
 
     <div id="status" style="display: flex; flex-direction: column; align-items: center;">
       <div class="table-container">
@@ -387,9 +385,9 @@
 
 
   <p class="text">
-    To ensure the quality and utility of these trajectories, OS-Genesis employs a Trajectory Reward Model (TRM). Built upon GPT-4o, TRM evaluates each trajectory based on completion (task fulfillment) and coherence (logical sequence of actions), assigning a graded reward score from 1 to 5. Unlike traditional binary filtering methods, TRM allows even incomplete but valuable trajectories to contribute to training.
-  </p>
+    Each task is validated and categorized by interface modality (GUI, CLI, or hybrid) and difficulty level, ensuring both diversity and challenge. Notably, ScienceBoard supports cross-application workflows, such as generating reports in TeXstudio based on prior analysis in ChimeraX—enabling end-to-end scientific automation.
 
+    The benchmark pushes beyond QA or code generation, setting a new bar for evaluating agents on tool use, coding, visual/textual reasoning, and domain-specific knowledge in real research contexts.  </p>
 
     <hr>
 
@@ -401,7 +399,7 @@
         <h2 class="text">Main Settings </h2>
 
         <p class="text">
-          We first evaluate OS-Genesis on mobiles tasks, covering AndroidWorld<d-cite key="rawles2024androidworld"></d-cite> (in-domain setting) and AndroidControl<d-cite key="li2024effectsdatascaleui"></d-cite> (OOD setting).
+          Even state-of-the-art models like GPT-4o and Claude achieve only ~15% average success on ScienceBoard. Open-source agents perform slightly worse, often dropping below 12%, and sometimes approaching 0% in specific task categories—highlighting a significant gap compared to human performance.
           The results are shown in <a href="#leaderboard">Table 1</a>
         </p>
 
@@ -415,10 +413,10 @@
         <div class="text" id="leaderboard" style="height: 750px; margin-top: 0;"></div>
         
         <p class="text">
-          <strong>AndroidWorld:</strong> OS-Genesis demonstrates exceptional performance on the AndroidWorld benchmark, significantly narrowing the gap between open-source agents and the state-of-the-art GPT-4o-based M3A agent. Training with OS-Genesis-synthesized data achieves nearly double the success rates compared to task-driven methods, with a success rate improvement from 9.82% to 17.41% for Qwen2-VL-7B and substantial gains for other backbones like InternVL2-8B.</li>
+          <strong>Domain-Specific Challenges:</strong> Agents perform relatively well on algebra and biochemistry tasks, but struggle significantly in geospatial and astronomy domains. This gap stems from two factors: (1) GUI-heavy interactions in GIS/astronomy are harder to ground visually than CLI-based tasks, and (2) these domains feature dense, complex visuals (e.g., maps, star charts) that strain current models' spatial reasoning abilities.</li>
         </p>
         <p class="text">
-          <strong>AndroidControl:</strong> On AndroidControl, OS-Genesis showcases strong OOD capability, outperforming baselines in both high/low-level tasks despite encountering only 20 of 833 apps during synthesis. It achieves superior action and planning, validating our exploration-first approach for generating diverse, high-quality tasks and adapting effectively to unseen environments.
+          <strong>Impact of Observations:</strong>  Multimodal input improves performance. The best results come from combining screenshots with a11ytree representations, offering both visual grounding and structured element data. In contrast, Set-of-Mark (SoM) sometimes introduces noise, especially in visually crowded interfaces like Celestia.
         </p>
 
         <h2 class="text">Disentangled Planning and Action </h2>
@@ -428,14 +426,16 @@
         </p>
 
         <p class="text">
-          <strong>WebArena:</strong> On WebArena, OS-Genesis delivers notable performance improvements across diverse 5 navigation scenarios, outperforming task-driven baselines and achieving significant gains with InternVL2-8B and Qwen2-VL-7B backbones. By leveraging reverse task synthesis, OS-Genesis effectively explores the rich interactive elements of web environments, producing more meaningful and diverse trajectories.
+          <strong>Modular Design Boosts Performance:</strong> ScienceBoard experiments reveal that separating planning from execution significantly improves performance. When GPT-4o is used solely as a planner and paired with a specialized VLM or GUI action model as the executor, success rates increase notably across domains.
         </p>
 
         <div class="text" id="leaderboard-seeact" style="height: 450px;"></div>
 
+        <div><strong>Implication</strong>: These findings highlight the potential of building multi-agent systems where different components specialize in distinct subtasks—planning, grounding, or domain understanding—paving the way for scalable and adaptable scientific agents.</div>
+
 
       <div>
-        <h1 class="text">Analysis</h1>
+        <!-- <h1 class="text">Analysis</h1> -->
         <!-- Radar -->
         <!--
         <h2 class="text">How TRM Impacts Performance?</h2>
@@ -446,8 +446,8 @@
         -->
 
         <!-- Line -->
-        <h2 class="text">How Scaling Trajectory Data Improves Agentic Ability?</h2>
-
+        <!-- <h2 class="text">How Scaling Trajectory Data Improves Agentic Ability?</h2> -->
+<!-- 
         <p class="text">
           We investigate the impact of data scale on building GUI agents. 
           To explore this, 
@@ -456,24 +456,24 @@
           Using AndroidWorld as our testbed, we focus on two primary questions:
           (1) How does performance improve as the data scale increases?
           (2) Does performance saturate at higher data scales?
-        </p>
+        </p> -->
 
-        <canvas id="A-2"></canvas>
-
+        <!-- <canvas id="A-2"></canvas> -->
+<!-- 
         <p class="text">
           As shown above, task performance generally improves as the number of trajectories increases, while saturation emerges at larger data scales.
-        </p>
+        </p> -->
 
         <!-- Bar #1 -->
-        <h2 class="text">How Far are we from Human Data?</h2>
+        <!-- <h2 class="text">How Far are we from Human Data?</h2> -->
 
-        <p class="text">
+        <!-- <p class="text">
           We also investigate the gap between OS-Genesis-synthesized data and human-annotated data.
 
           (1) trajectories from OS-Genesis v.s. human-annotated trajectories. We select 1K crowdsourced trajectories from AndroidControl training set for comparison.
   
           As shown below, we significantly narrow the performance gap between synthetic trajectories and human-annotated trajectories. This is notably evident in high-level tasks, demonstrating that agents trained on OS-Genesis trajectories can plan and solve problems more closely aligned with human manners. In terms of average success rate, viewing human-annotated data as the gold standard, the performance retention rate of OS-Genesis data surpasses 80%.
-        </p>
+        </p> -->
 
         <div style="display: flex; max-width: 100%; justify-content: space-between;">
           <div style="width: 49%; height: 240px;">
@@ -483,10 +483,10 @@
             <canvas id="A-3-2"></canvas>
           </div>
         </div>
-
+<!-- 
         <p class="text">
           (2) high-level instructions synthesized through OS-Genesis v.s. human-written instructions. For comparison, we match 500 human-written tasks from the AndroidControl training set and use GPT-4o for exploration. As observed, even when high-level instructions are written by human, their performance falls short compared to OS-Genesis's instructions. This can be attributed to two main factors: (a) Pre-defined tasks sometimes fail to align with the dynamic environment, and (b) Models may introduce errors when interpreting the intentions of human annotators. In contrast, OS-Genesis generates data in a progressive way, grounded in low-level interactions, which makes it inherently more suitable for unsupervised exploration and adaptation.
-        </p>
+        </p> -->
 
         <!-- Bar #2 -->
         <div style="display: flex; max-width: 100%; justify-content: space-between;">
@@ -505,7 +505,7 @@
     <div id="conclusion" style="position: relative; margin-top: 40px; margin-bottom: 0px;">
       <h2 class="text" style="margin-top:0px; margin-bottom:10px">Conclusion</h2>
       <p class="text">
-        OS-Genesis is a data synthesis pipeline designed to revolutionize the construction of GUI agent trajectories. Reverse task synthesis enables the generation of diverse and coherent tasks by retroactively deriving instructions from observed interactions, while TRM ensures the quality of trajectories through graded evaluations. Together, OS-Genesis address critical challenges in GUI agent trajectories construction, paving the way for high-quality agentic data generation. We hope that it can provide a promising direction for generating high-quality trajectory data for GUI agents, bringing the community one step closer to achieving digital automation.
+        ScienceBoard represents a major step toward building intelligent, computer-using agents for real scientific workflows. By combining a realistic, multimodal environment with a challenging benchmark grounded in domain expertise, ScienceBoard enables rigorous evaluation of agents in tasks far beyond static QA or code generation. Our findings reveal that even top-tier models fall short of human performance, especially in visually complex or domain-specific scenarios. However, modular designs, multimodal input, and agent specialization show promising gains—pointing to a path forward. ScienceBoard lays the foundation for the next generation of AI research assistants. We invite the community to explore, evaluate, and build upon this platform to accelerate progress toward truly autonomous scientific discovery.
       </p>
     </div>
 
