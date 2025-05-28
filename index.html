@@ -581,7 +581,7 @@
     "ChimeraX",
     "Celestia",
     "GrassGIS",
-    "TeXStudio"
+    "TeX"
   ]
 
   new Chart(document.querySelector("#test-dist"), {
@@ -617,7 +617,9 @@
             "#C1EBE3"
           ],
           datalabels: {
-            formatter: (value, context) => ""
+            formatter: (value, context) =>
+              outerLabels[context.dataIndex].split(" ").map((item) => item[0]).join("") + ` (${value})`
+                ?? ""
           }
         },
         {
@@ -631,7 +633,7 @@
             "#A1D9C9"
           ],
           datalabels: {
-            formatter: (value, context) => innerLabels[context.dataIndex]
+            formatter: (value, context) => innerLabels[context.dataIndex] + ` (${value})`
           }
         }
       ]
