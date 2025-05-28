@@ -710,6 +710,7 @@
   const gridOptions = {
     rowData: [
       {
+        icon: "chatgpt-icon.svg",
         model: "GPT-4o (2024-08-06) w/ screenshot",
         alg: 3.23,
         bio: 0.00,
@@ -720,6 +721,7 @@
         acc: 1.58,
       },
       {
+        icon: "claude-ai-icon.png",
         model: "Calude-3.7-Sonnet w/ screenshot",
         alg: 9.67,
         bio: 37.93,
@@ -730,6 +732,7 @@
         acc: 10.48
       },
       {
+        icon: "google-gemini-icon.svg",
         model: "Gemini-2.0-Flash w/ screenshot",
         alg: 6.45,
         bio: 3.45,
@@ -740,6 +743,7 @@
         acc: 3.15
       },
       {
+        icon: "qwen.png",
         model: "Qwen2.5-VL-72B w/ screenshot",
         alg: 22.58,
         bio: 27.59,
@@ -750,6 +754,7 @@
         acc: 12.94
       },
       {
+        icon: "pjlab.png",
         model: "InternVL3-78B w/ screenshot",
         alg: 6.45,
         bio: 3.45,
@@ -760,6 +765,7 @@
         acc: 2.69
       },
       {
+        icon: "chatgpt-icon.svg",
         model: "GPT-4o (2024-08-06) w/ a11y_tree",
         alg: 12.90,
         bio: 20.69,
@@ -770,6 +776,7 @@
         acc: 7.10
       },
       {
+        icon: "claude-ai-icon.png",
         model: "Calude-3.7-Sonnet w/ a11y_tree",
         alg: 19.35,
         bio: 34.48,
@@ -780,6 +787,7 @@
         acc: 12.12
       },
       {
+        icon: "google-gemini-icon.svg",
         model: "Gemini-2.0-Flash w/ a11y_tree",
         alg: 9.68,
         bio: 17.24,
@@ -790,6 +798,7 @@
         acc: 4.49
       },
       {
+        icon: "chatgpt-icon.svg",
         model: "o3-mini (2025-01-31) w/ a11y_tree",
         alg: 16.13,
         bio: 20.69,
@@ -800,6 +809,7 @@
         acc: 10.84
       },
       {
+        icon: "qwen.png",
         model: "Qwen2.5-VL-72B w/ a11y_tree",
         alg: 9.68,
         bio: 10.34,
@@ -810,6 +820,7 @@
         acc: 4.33
       },
       {
+        icon: "pjlab.png",
         model: "InternVL3-78B w/ a11y_tree",
         alg: 3.23,
         bio: 3.45,
@@ -820,6 +831,7 @@
         acc: 1.11
       },
       {
+        icon: "chatgpt-icon.svg",
         model: "GPT-4o (2024-08-06) w/ screenshot+a11y_tree",
         alg: 22.58,
         bio: 37.93,
@@ -830,6 +842,7 @@
         acc: 14.45
       },
       {
+        icon: "claude-ai-icon.png",
         model: "Calude-3.7-Sonnet w/ screenshot+a11y_tree",
         alg: 12.90,
         bio: 41.37,
@@ -840,6 +853,7 @@
         acc: 15.79
       },
       {
+        icon: "google-gemini-icon.svg",
         model: "Gemini-2.0-Flash w/ screenshot+a11y_tree",
         alg: 16.13,
         bio: 24.14,
@@ -850,6 +864,7 @@
         acc: 12.32
       },
       {
+        icon: "qwen.png",
         model: "Qwen2.5-VL-72B w/ screenshot+a11y_tree",
         alg: 16.13,
         bio: 20.69,
@@ -860,6 +875,7 @@
         acc: 11.74
       },
       {
+        icon: "pjlab.png",
         model: "InternVL3-78B w/ screenshot+a11y_tree",
         alg: 6.45,
         bio: 3.45,
@@ -870,6 +886,7 @@
         acc: 3.20
       },
       {
+        icon: "chatgpt-icon.svg",
         model: "GPT-4o (2024-08-06) w/ set_of_marks",
         alg: 6.45,
         bio: 3.45,
@@ -880,6 +897,7 @@
         acc: 14.45
       },
       {
+        icon: "claude-ai-icon.png",
         model: "Calude-3.7-Sonnet w/ set_of_marks",
         alg: 16.13,
         bio: 31.03,
@@ -890,6 +908,7 @@
         acc: 11.93
       },
       {
+        icon: "google-gemini-icon.svg",
         model: "Gemini-2.0-Flash w/ set_of_marks",
         alg: 3.23,
         bio: 0.00,
@@ -900,6 +919,7 @@
         acc: 2.09
       },
       {
+        icon: "qwen.png",
         model: "Qwen2.5-VL-72B w/ set_of_marks",
         alg: 6.45,
         bio: 6.90,
@@ -910,6 +930,7 @@
         acc: 6.36
       },
       {
+        icon: "qwen.png",
         model: "QvQ-72B-Preview w/ set_of_marks",
         alg: 0.00,
         bio: 0.00,
@@ -920,6 +941,7 @@
         acc: 0.49
       },
       {
+        icon: "pjlab.png",
         model: "InternVL3-78B w/ set_of_marks",
         alg: 3.23,
         bio: 6.90,
@@ -932,9 +954,17 @@
     ],
     columnDefs: [
       {
+        field: "icon",
+        headerName: "Icon",
+        cellRenderer: function(params) {
+          return `<img src='public/logos/${params.value}'/>`
+        },
+        flex: 0.5
+      },
+      {
         field: "model",
         headerName: "Settings",
-        flex: 3
+        flex: 2.5
       },
       {
         field: "acc",
@@ -989,6 +1019,7 @@
   const gridOptionsSeeact = {
     rowData: [
       {
+        icon: "pjlab.png",
         model: "GPT-4o (2024-08-06) -> OS-Atlas-Pro-7B w/ screenshot",
         alg: 6.25,
         bio: 10.34,
@@ -997,6 +1028,7 @@
         acc: 4.92
       },
       {
+        icon: "osu-nlp.jpg",
         model: "GPT-4o (2024-08-06) -> UGround-V1-7B w/ screenshot",
         alg: 0.00,
         bio: 3.45,
@@ -1005,6 +1037,7 @@
         acc: 1.62
       },
       {
+        icon: "qwen.png",
         model: "GPT-4o (2024-08-06) -> Qwen2.5-VL-7B w/ screenshot",
         alg: 12.50,
         bio: 34.48,
@@ -1013,6 +1046,7 @@
         acc: 16.96
       },
       {
+        icon: "ui_tars_logo.png",
         model: "GPT-4o (2024-08-06) -> UI-TARS-72B w/ screenshot",
         alg: 3.23,
         bio: 10.34,
@@ -1023,9 +1057,17 @@
     ],
     columnDefs: [
       {
+        field: "icon",
+        headerName: "Icon",
+        cellRenderer: function(params) {
+          return `<img src='public/logos/${params.value}'/>`
+        },
+        flex: 0.5
+      },
+      {
         field: "model",
         headerName: "Settings",
-        flex: 5
+        flex: 4.5
       },
       {
         field: "acc",
