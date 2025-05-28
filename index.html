@@ -309,12 +309,86 @@
       After reverse task synthesis generates high-level and low-level task instructions, these instructions are executed within the GUI environment to create complete trajectories.
     </p>
 
-    pie chart and table here
+    <div id="status" style="display: flex; flex-direction: column; align-items: center;">
+      <div class="table-container">
+        <table class="data-table" style="border-collapse: collapse;">
+          <thead>
+            <tr>
+              <th class="tb-hdr">Task Type</th>
+              <th class="tb-hdr">Statistics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Total Tasks</td>
+              <td style="text-align: right;">169 (100%)</td>
+            </tr>
+            <tr>
+              <td>- GUI</td>
+              <td style="text-align: right;">38 (22.5%)</td>
+            </tr>
+            <tr>
+              <td>- CLI</td>
+              <td style="text-align: right;">33 (19.5%)</td>
+            </tr>
+            <tr>
+              <td class="bottom-border">- GUI + CLI</td>
+              <td class="bottom-border" style="text-align: right;">98 (58.0%)</td>
+            </tr>
+            <tr>
+              <td colspan="2">Difficulty</td>
+            </tr>
+            <tr>
+              <td>- Easy</td>
+              <td style="text-align: right;">91 (53.8%)</td>
+            </tr>
+            <tr>
+              <td>- Medium</td>
+              <td style="text-align: right;">48 (28.4%)</td>
+            </tr>
+            <tr>
+              <td>- Hard</td>
+              <td style="text-align: right;">28 (16.6%)</td>
+            </tr>
+            <tr>
+              <td class="bottom-border">- Open Problems</td>
+              <td class="bottom-border" style="text-align: right;">2 (1.2%)</td>
+            </tr>
+            <tr>
+              <td colspan="2">Instructions</td>
+            </tr>
+            <tr>
+              <td>Average length of task instructions</td>
+              <td style="text-align: right;">20.0</td>
+            </tr>
+            <tr>
+              <td class="bottom-border">Average length of agentic prompts</td>
+              <td class="bottom-border" style="text-align: right;">374.9</td>
+            </tr>
+            <tr>
+              <td colspan="2">Execution</td>
+            </tr>
+            <tr>
+              <td>Average steps</td>
+              <td style="text-align: right;">9.0</td>
+            </tr>
+            <tr>
+              <td class="bottom-border">Average time comsumption</td>
+              <td class="bottom-border" style="text-align: right;">124(s)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption style="text-align: center; width: 140%;">
+        Statistics of ScienceBoard
+      </figcaption>
+    </div>
+  </div>
 
 
-    <p class="text">
+  <p class="text">
     To ensure the quality and utility of these trajectories, OS-Genesis employs a Trajectory Reward Model (TRM). Built upon GPT-4o, TRM evaluates each trajectory based on completion (task fulfillment) and coherence (logical sequence of actions), assigning a graded reward score from 1 to 5. Unlike traditional binary filtering methods, TRM allows even incomplete but valuable trajectories to contribute to training.
-    </p>
+  </p>
 
 
     <hr>

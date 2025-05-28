@@ -9,3 +9,11 @@ body {
 h1 {
     font-weight: 700;
 }
+
+table.data-table td {
+    border-bottom: none;
+}
+
+.bottom-border {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
