@@ -491,7 +491,7 @@
         specialized VLM or GUI action model as the executor, success rates increase notably across domains.
       </p>
 
-      <div class="text" id="leaderboard-seeact" style="height: 225px;"></div>
+      <div class="text" id="leaderboard-seeact" style="height: 265px;"></div>
 
       <div class="text"><strong>Implication</strong>: These findings highlight the potential of building multi-agent systems where
         different components specialize in distinct subtasks—planning, grounding, or domain understanding—paving the way
@@ -1017,6 +1017,15 @@
 
   const gridOptionsSeeact = {
     rowData: [
+      {
+        icon: "Microsoft_icon.svg.png",
+        model: "GPT-4o (2024-08-06) -> GUI-Actor w/ screenshot",
+        alg: 21.88,
+        bio: 44.83,
+        gis: 2.94,
+        ast: 12.12,
+        acc: 20.44
+      },
       {
         icon: "pjlab.png",
         model: "GPT-4o (2024-08-06) -> OS-Atlas-Pro-7B w/ screenshot",
