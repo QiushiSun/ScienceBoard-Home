@@ -23,3 +23,10 @@ p.ol {
     margin-bottom: 0;
     margin-left: -10%;
 }
+
+#leaderboard .ag-cell img,
+#leaderboard-seeact .ag-cell img {
+    max-height: 28px;
+    width: auto;
+    object-fit: contain;
+}

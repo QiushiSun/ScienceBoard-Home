@@ -235,11 +235,26 @@
           <img src="public/logos/ecnu.png" style="height: 80px;">
           <img src="public/logos/Yale_University_Shield_1.svg.png" style="height: 80px;">
         </p>
-        <p style="display: flex; flex-direction: row; justify-content: center; align-items: center">
-          <span style="font-size: 32px; color: #a83102"> ICLR 2026 </span>
-          <img src="static/img/iclr-navbar-logo-3.svg" style="height: 50px;">
-        </p>
       </div>
+    </div>
+
+    <div class="text news-section"
+      style="background: #EAF2FB; border: 1px solid #C7DBF0; border-radius: 12px; padding: 14px 22px 12px 22px; box-sizing: border-box; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <h2 style="margin: 0 0 6px 0; font-size: 1.35em; color: #2B4A6F; font-family: inherit;">📢 News</h2>
+      <p style="margin: 4px 0; font-size: 1.05rem;"><b>2026-01-26</b> ScienceBoard is accepted by <span
+          style="color: #C0392B; font-weight: bold;">ICLR 2026</span>! 🎉</p>
+      <p style="margin: 4px 0; font-size: 1.05rem;"><b>2025-08-28</b> We release <a
+          href="https://arxiv.org/abs/2508.20096">CODA</a>, a dual-brain agent that achieves SOTA on ScienceBoard 🧠</p>
+      <p style="margin: 4px 0; font-size: 1.05rem;"><b>2025-06-30</b> We release new evaluation results (GUI-Actor,
+        UI-TARS-1.5) and <a href="https://huggingface.co/datasets/OS-Copilot/ScienceBoard-Traj/tree/main">agent
+          trajectories</a>. 🎊</p>
+      <p style="margin: 4px 0; font-size: 1.05rem;"><b>2025-06-08</b> ScienceBoard will be presented at <a
+          href="https://www.icml-computeruseagents.com/">WCUA@ICML 2025</a> as an oral paper! 🚀</p>
+      <p style="margin: 4px 0; font-size: 1.05rem;"><b>2025-06-04</b> We release the <a
+          href="https://huggingface.co/OS-Copilot/ScienceBoard-Env">virtual machine snapshot</a> of ScienceBoard. 🌏</p>
+      <p style="margin: 4px 0; font-size: 1.05rem;"><b>2025-05-27</b> Initial release of our <a
+          href="https://arxiv.org/abs/2505.19897">paper</a>, environment, benchmark, and <a href="#">🌐 Project
+          Website</a>. Check it out! 🚀</p>
     </div>
 
     <p class="text abstract">
@@ -306,16 +321,6 @@
         target="_blank">codes for infra</a>, benchmark evaluation pipelines and more
       details. We hope ScienceBoard can inspire and boost future research advancing computer-using agents in scientific
       workflows.
-    </p>
-
-    <p class="text">
-      <p class="text ol"><b>2026-01-26</b> ScienceBoard is accepted by ICLR 2026! 🎉. </p>
-      <p class="text ol"><b>2025-08-28</b> We release <a href="https://arxiv.org/abs/2508.20096">CODA</a><d-cite
-        key="sun2025coda"></d-cite>, a dual-brain agent that achieves SOTA on ScienceBoard 🧠. </p>
-      <p class="text ol"><b>2025-06-30</b> We release new evaluation results (GUI-Actor, UI-TARS-1.5) and <a href="https://huggingface.co/datasets/OS-Copilot/ScienceBoard-Traj/tree/main">agent trajectories</a>. 🎊 </p>
-      <p class="text ol"><b>2025-06-08</b> ScienceBoard will be presented at <a href="https://www.icml-computeruseagents.com/">WCUA@ICML 2025</a> as an oral paper! 🚀 </p>
-      <p class="text ol"><b>2025-06-04</b> We release the <a href="https://huggingface.co/OS-Copilot/ScienceBoard-Env">virtual machine snapshot</a> of ScienceBoard. 🌏 </p>
-      <p class="text ol"><b>2025-05-27</b> Initial release of our <a href="https://arxiv.org/abs/2505.19897">paper</a>, environment, benchmark, and <a href="#">🌐 Project Website</a>. Check it out! 🚀 </p>
     </p>
 
     <h1 class="text" id="main-pipeline">Computer-using Agents for Science</h1>
@@ -471,7 +476,7 @@
       <h2 class="text">Main Settings </h2>
 
       <p class="text">
-        Even state-of-the-art models like GPT-4o and Claude achieve only ~15% average success on ScienceBoard.
+        Even state-of-the-art models like GPT-5 and Claude achieve only ~20% average success on ScienceBoard.
         Open-source agents perform slightly worse, often dropping below 12%, and sometimes approaching 0% in specific
         task categories—highlighting a significant gap compared to human performance.
         The results are shown in <a href="#leaderboard">Table 1</a>
@@ -736,6 +741,17 @@
     rowData: [
       {
         icon: "chatgpt-icon.svg",
+        model: "GPT-5.5 w/ screenshot",
+        alg: 9.68,
+        bio: 41.38,
+        gis: 11.76,
+        atp: 3.85,
+        ast: 18.18,
+        doc: 25.00,
+        acc: 18.31
+      },
+      {
+        icon: "chatgpt-icon.svg",
         model: "GPT-5 w/ screenshot",
         alg: 6.45,
         bio: 24.14,
@@ -758,6 +774,17 @@
       },
       {
         icon: "claude-ai-icon.png",
+        model: "Claude-Opus-4.6 w/ screenshot",
+        alg: 3.23,
+        bio: 68.97,
+        gis: 2.94,
+        atp: 0.00,
+        ast: 6.06,
+        doc: 6.25,
+        acc: 14.58
+      },
+      {
+        icon: "claude-ai-icon.png",
         model: "Claude-3.7-Sonnet w/ screenshot",
         alg: 9.67,
         bio: 37.93,
@@ -769,6 +796,17 @@
       },
       {
         icon: "google-gemini-icon.svg",
+        model: "Gemini-2.5-Pro w/ screenshot",
+        alg: 6.45,
+        bio: 31.03,
+        gis: 0.00,
+        atp: 0.00,
+        ast: 0.00,
+        doc: 12.50,
+        acc: 8.33
+      },
+      {
+        icon: "google-gemini-icon.svg",
         model: "Gemini-2.0-Flash w/ screenshot",
         alg: 6.45,
         bio: 3.45,
@@ -777,6 +815,28 @@
         ast: 0.00,
         doc: 6.06,
         acc: 3.15
+      },
+      {
+        icon: "pjlab.png",
+        model: "InternVL3-78B w/ screenshot",
+        alg: 6.45,
+        bio: 3.45,
+        gis: 0.00,
+        atp: 0.00,
+        ast: 0.00,
+        doc: 6.25,
+        acc: 5.46
+      },
+      {
+        icon: "ui_tars_logo.png",
+        model: "UI-TARS-1.5-7B w/ screenshot",
+        alg: 12.90,
+        bio: 13.79,
+        gis: 0.00,
+        atp: 0.00,
+        ast: 6.06,
+        doc: 0.00,
+        acc: 2.69
       },
       {
         icon: "qwen.png",
@@ -812,28 +872,6 @@
         acc: 9.81
       },
       {
-        icon: "pjlab.png",
-        model: "InternVL3-78B w/ screenshot",
-        alg: 6.45,
-        bio: 3.45,
-        gis: 0.00,
-        atp: 0.00,
-        ast: 0.00,
-        doc: 6.25,
-        acc: 2.69
-      },
-      {
-        icon: "ui_tars_logo.png",
-        model: "UI-TARS-1.5 w/ screenshot",
-        alg: 12.90,
-        bio: 13.79,
-        gis: 0.00,
-        atp: 0.00,
-        ast: 6.06,
-        doc: 0.00,
-        acc: 5.92
-      },
-      {
         icon: "kimi.jpg",
         model: "Kimi-K2.5 w/ screenshot",
         alg: 9.68,
@@ -851,8 +889,8 @@
         bio: 20.69,
         gis: 2.94,
         atp: 0.00,
-        ast: 0.00,
-        doc: 6.06,
+        ast: 6.06,
+        doc: 0.00,
         acc: 7.10
       },
       {
@@ -912,14 +950,25 @@
       },
       {
         icon: "chatgpt-icon.svg",
-        model: "GPT-OSS w/ a11y_tree",
+        model: "GPT-oss-120B w/ a11y_tree",
         alg: 19.35,
         bio: 13.79,
         gis: 0.00,
         atp: 0.00,
         ast: 9.09,
         doc: 0.00,
-        acc: 7.69
+        acc: 7.04
+      },
+      {
+        icon: "chatgpt-icon.svg",
+        model: "GPT-5 w/ screenshot+a11y_tree",
+        alg: 41.93,
+        bio: 62.07,
+        gis: 5.88,
+        atp: 7.69,
+        ast: 15.15,
+        doc: 12.50,
+        acc: 24.20
       },
       {
         icon: "chatgpt-icon.svg",
@@ -942,6 +991,17 @@
         ast: 9.09,
         doc: 18.75,
         acc: 15.79
+      },
+      {
+        icon: "google-gemini-icon.svg",
+        model: "Gemini-2.5-Pro w/ screenshot+a11y_tree",
+        alg: 16.13,
+        bio: 55.17,
+        gis: 2.94,
+        atp: 0.00,
+        ast: 15.15,
+        doc: 12.50,
+        acc: 16.98
       },
       {
         icon: "google-gemini-icon.svg",
@@ -985,7 +1045,7 @@
         atp: 0.00,
         ast: 3.03,
         doc: 12.50,
-        acc: 14.45
+        acc: 4.24
       },
       {
         icon: "claude-ai-icon.png",
@@ -1046,17 +1106,22 @@
     columnDefs: [
       {
         field: "icon",
-        headerName: "Org.",
+        headerName: "",
         cellRenderer: function(params) {
           return `<img src='public/logos/${params.value}'/>`
         },
         lockPosition: true,
         suppressMovable: true,
-        flex: 0.5
+        resizable: false,
+        sortable: false,
+        suppressSizeToFit: true,
+        width: 64,
+        minWidth: 64,
+        maxWidth: 64
       },
       {
         field: "model",
-        headerName: "Settings",
+        headerName: "Model & Settings",
         flex: 2.5
       },
       {
@@ -1160,17 +1225,22 @@
     columnDefs: [
       {
         field: "icon",
-        headerName: "Org.",
+        headerName: "",
         cellRenderer: function(params) {
           return `<img src='public/logos/${params.value}'/>`
         },
         lockPosition: true,
         suppressMovable: true,
-        flex: 0.5
+        resizable: false,
+        sortable: false,
+        suppressSizeToFit: true,
+        width: 64,
+        minWidth: 64,
+        maxWidth: 64
       },
       {
         field: "model",
-        headerName: "Settings",
+        headerName: "Model & Settings",
         flex: 4.5
       },
       {
