@@ -1174,7 +1174,8 @@
         flex: 2.5,
         cellRenderer: (params) => {
           const cls = params.data.harness ? "harness" : "base";
-          return `${params.value} <span class="protocol-dot ${cls}"></span>`;
+          return `<span class="model-cell"><span class="model-name">${params.value}</span>` +
+            `<span class="protocol-dot ${cls}"></span></span>`;
         }
       },
       {
