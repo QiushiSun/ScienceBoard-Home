@@ -30,3 +30,34 @@ p.ol {
     width: auto;
     object-fit: contain;
 }
+
+.protocol-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.protocol-dot.base {
+    background: #6D8ABE;
+}
+
+.protocol-dot.harness {
+    background: #45B08C;
+}
+
+.protocol-legend {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    margin-left: auto;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.protocol-legend .protocol-dot {
+    margin-left: 12px;
+    margin-right: 5px;
+}

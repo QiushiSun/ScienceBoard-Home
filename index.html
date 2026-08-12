@@ -493,8 +493,13 @@
           onclick="externalOptionChange(this, 'screenshot+a11y_tree')">Screenshot + A11y Tree</button>
         <button class="button is-active avoid-attach" onclick="externalOptionChange(this, 'set_of_marks')">Set of
           Marks</button>
+        <button class="button avoid-attach" onclick="externalOptionChange(this, 'model_only')">Model Only</button>
         <input class="input avoid-attach" type="text" oninput="externalFilterChange(event)" style="font-family: serif;"
           placeholder="Search by keywords">
+        <span class="protocol-legend">
+          <span class="protocol-dot base"></span> Model
+          <span class="protocol-dot harness"></span> with Harness
+        </span>
       </div>
       <div class="text" id="leaderboard" style="height: 750px; margin-top: 0;"></div>
 
@@ -707,12 +712,17 @@
     "a11y_tree": true,
     "screenshot+a11y_tree": true,
     "set_of_marks": true,
+    "model_only": false,
     "input": ""
   };
 
   const doesExternalFilterPass = (node) => {
     if (!node.data) {
       return true;
+    }
+
+    if (filterCondition["model_only"] && node.data.harness) {
+      return false;
     }
 
     const contains = (obs) => filterCondition[obs] && node.data.model.includes(obs);
@@ -884,6 +894,42 @@
         ast: 3.03,
         doc: 6.25,
         acc: 7.76
+      },
+      {
+        icon: "qwen.png",
+        model: "Qwen-CUA w/ screenshot",
+        harness: true,
+        alg: 74.19,
+        bio: 82.76,
+        gis: 67.65,
+        atp: 30.77,
+        ast: 57.58,
+        doc: 75.00,
+        acc: 64.66
+      },
+      {
+        icon: "qwen.png",
+        model: "Qwen-3.7 w/ screenshot",
+        harness: true,
+        alg: 38.71,
+        bio: 68.97,
+        gis: 44.12,
+        atp: 0.00,
+        ast: 15.15,
+        doc: 50.00,
+        acc: 36.16
+      },
+      {
+        icon: "claude-ai-icon.png",
+        model: "Claude-Opus-4.8 w/ screenshot",
+        harness: true,
+        alg: 74.19,
+        bio: 89.66,
+        gis: 70.59,
+        atp: 19.23,
+        ast: 60.61,
+        doc: 93.75,
+        acc: 68.00
       },
       {
         icon: "chatgpt-icon.svg",
@@ -1125,7 +1171,11 @@
       {
         field: "model",
         headerName: "Model & Settings",
-        flex: 2.5
+        flex: 2.5,
+        cellRenderer: (params) => {
+          const cls = params.data.harness ? "harness" : "base";
+          return `${params.value} <span class="protocol-dot ${cls}"></span>`;
+        }
       },
       {
         field: "acc",
